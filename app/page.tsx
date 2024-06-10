@@ -1,113 +1,158 @@
-import Image from "next/image";
+import Button from "@/components/Button";
+import Input from "@/components/Input";
+import Navbar from "@/components/Navbar";
+import { ArrowRight, FileText, Search, TrendingUp } from "lucide-react";
+import { FlipWords } from "@/components/ui/flip-words";
+import Footer from "@/components/Footer";
 
 export default function Home() {
+  const words = ["Pulse", "Rhythm", "Spirit", "Beat"];
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <main className="flex flex-col items-center pt-20">
+      <div className="absolute top-[75%] -z-10 h-[200px] w-[2000px] rotate-[-25deg] bg-gradient-to-r from-purple via-pink to-yellow"></div>
+
+      <Navbar />
+
+      <section className="h-[calc(100svh-140px)] overflow-x-hidden">
+        <div className="flex h-full w-full justify-center gap-32 pt-20">
+          <div className="flex w-min flex-col justify-self-end">
+            <div className="text-6xl font-bold">
+              Unlock Croatia's{" "}
+              <FlipWords words={words} className="text-white" />
+            </div>
+            <p className="mt-6 text-xl text-gray">
+              Dive into the Trends Shaping Our Nation!
+            </p>
+            <div className="mt-12 flex items-center gap-6">
+              <Button text="Explore" className="bg-purple" />
+              <button className="flex gap-2 text-nowrap bg-transparent font-semibold text-purple">
+                How it works <ArrowRight />
+              </button>
+            </div>
+          </div>
+
+          <div className="flex h-fit flex-col items-center justify-center rounded-3xl border-[2px] border-white/10 bg-container px-9 py-16 backdrop-blur-lg">
+            <Input
+              text="Search for trends..."
+              className="bg-gradient-to-r from-inputGray/20 via-inputGray/20 to-purple/30"
             />
-          </a>
+
+            <img src="home_chart.svg" className="mt-12 w-[400px]" />
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <section className="mt-40 flex flex-col items-center overflow-x-hidden">
+        <div className="relative px-6">
+          <p className="text-center text-4xl font-bold">How it works</p>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+          <div className="mt-16 flex gap-16">
+            <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container p-9">
+              <FileText className="size-16 stroke-[0.5] text-purple" />
+              <p className="mt-10 text-nowrap text-2xl font-semibold">
+                Data Scraping
+              </p>
+              <p className="mt-6 text-center text-gray">
+                We gather Croatia's online data quickly and accurately
+              </p>
+            </div>
+
+            <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container p-9 before:content-['2']">
+              <Search className="size-16 stroke-[0.5] text-purple" />
+              <p className="mt-10 text-nowrap text-2xl font-semibold">
+                Searching
+              </p>
+              <p className="mt-6 text-center text-gray">
+                Enter your prompt, and we'll find the data in our database.
+              </p>
+            </div>
+
+            <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container p-9 before:content-['3']">
+              <TrendingUp className="size-16 stroke-[0.5] text-purple" />
+              <p className="mt-10 text-nowrap text-2xl font-semibold">
+                Visualizing
+              </p>
+              <p className="mt-6 text-center text-gray">
+                See clear charts showing Croatia's digital data trends.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative mt-40 flex h-svh flex-col justify-center overflow-hidden bg-gradient-to-br from-purple via-pink to-yellow text-black">
+        <img src="croatia.svg" className="absolute right-0 top-0 w-[550px]" />
+
+        <svg
+          className="absolute top-0 h-[150px] w-full rotate-180 fill-black"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <polygon points="0,100 100,0 100,100" />
+        </svg>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <div className="grid grid-cols-2 px-64">
+          <div className="flex flex-col">
+            <p className="text-5xl font-bold">About Croatia Trends</p>
+            <p className="mt-8 text-xl font-light">
+              We're a group of fresh minds, passionate about{" "}
+              <span className="font-bold">
+                unlocking Croatia's digital story. <br></br>
+                <br></br>
+              </span>{" "}
+              We provide you with clear,{" "}
+              <span className="font-bold">insightful graphs,</span> just like
+              Google Trends, but tailored{" "}
+              <span className="font-bold">exclusively for Croatia.</span>{" "}
+              <br></br>
+              <br></br> Let's explore together and make data-driven decisions
+              for a brighter tomorrow!
+            </p>
+          </div>
+        </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+        <svg
+          className="absolute bottom-0 h-[150px] w-full translate-y-[-1] rotate-180 fill-black"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+          <polygon points="0,100 100,0 100,100" />
+        </svg>
+      </section>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+      <section className="relative mt-40 w-full">
+        <p className="text-center text-4xl font-bold">Contact</p>
+
+        <div className="mt-16 flex items-center justify-center gap-16 px-64">
+          <p className="max-w-sm text-4xl font-extralight text-white/50">
+            Got questions? Ideas? Or just want to chat?{" "}
+            <span className="font-bold text-white">We're all ears.</span>
           </p>
-        </a>
-      </div>
+
+          <div className="flex w-[350px] flex-col gap-4">
+            <Input
+              hasIcon={false}
+              text="Name"
+              className="w-full bg-gradient-to-r from-[#2a2b2d]/85 to-[#36333e]"
+            />
+            <Input
+              hasIcon={false}
+              text="Email"
+              className="w-full bg-gradient-to-r from-[#2a2b2d]/85 to-[#36333e]"
+            />
+            <textarea
+              placeholder="Message"
+              style={{ resize: "none" }}
+              className="h-[125px] w-full rounded-3xl bg-transparent bg-gradient-to-r from-[#2a2b2d]/85 to-[#36333e] px-6 py-2.5 text-white focus:outline-none"
+            />
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </main>
   );
 }
