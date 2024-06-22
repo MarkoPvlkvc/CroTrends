@@ -9,12 +9,15 @@ export default function Home() {
   const words = ["Pulse", "Rhythm", "Spirit", "Beat"];
 
   return (
-    <main className="flex flex-col items-center pt-20">
-      <div className="absolute top-[75%] -z-10 h-[200px] w-[2000px] rotate-[-25deg] bg-gradient-to-r from-purple via-pink to-yellow"></div>
+    <main className="relative flex flex-col items-center pt-20">
+      <div
+        style={{ clipPath: "polygon(0 70%, 100% 0, 100% 30%, 0 100%)" }}
+        className="absolute top-[10%] h-[700px] w-full bg-gradient-to-tr from-purple via-pink to-yellow"
+      />
 
       <Navbar />
 
-      <section className="h-[calc(100svh-140px)] overflow-x-hidden">
+      <section className="relative h-[calc(100svh-140px)] overflow-clip">
         <div className="flex h-full w-full justify-center gap-32 pt-20">
           <div className="flex w-min flex-col justify-self-end">
             <div className="text-6xl font-bold">
@@ -35,7 +38,7 @@ export default function Home() {
           <div className="flex h-fit flex-col items-center justify-center rounded-3xl border-[2px] border-white/10 bg-container px-9 py-16 backdrop-blur-lg">
             <Input
               text="Search for trends..."
-              className="bg-gradient-to-r from-inputGray/20 via-inputGray/20 to-purple/30"
+              className="bg-gradient-to-r from-gray/20 via-gray/20 to-purple/30"
             />
 
             <img src="home_chart.svg" className="mt-12 w-[400px]" />
@@ -43,13 +46,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-40 flex flex-col items-center overflow-x-hidden">
+      <section className="relative mt-40 flex flex-col items-center overflow-clip">
         <div className="relative px-6">
           <p className="text-center text-4xl font-bold">How it works</p>
 
           <div className="mt-16 flex gap-16">
             <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container p-9">
-              <FileText className="size-16 stroke-[0.5] text-purple" />
+              <FileText className="mt-6 size-16 stroke-[0.5] text-purple" />
               <p className="mt-10 text-nowrap text-2xl font-semibold">
                 Data Scraping
               </p>
@@ -59,7 +62,7 @@ export default function Home() {
             </div>
 
             <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container p-9 before:content-['2']">
-              <Search className="size-16 stroke-[0.5] text-purple" />
+              <Search className="mt-6 size-16 stroke-[0.5] text-purple" />
               <p className="mt-10 text-nowrap text-2xl font-semibold">
                 Searching
               </p>
@@ -69,7 +72,7 @@ export default function Home() {
             </div>
 
             <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container p-9 before:content-['3']">
-              <TrendingUp className="size-16 stroke-[0.5] text-purple" />
+              <TrendingUp className="mt-6 size-16 stroke-[0.5] text-purple" />
               <p className="mt-10 text-nowrap text-2xl font-semibold">
                 Visualizing
               </p>
@@ -81,9 +84,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative mt-40 flex h-svh flex-col justify-center overflow-hidden bg-gradient-to-br from-purple via-pink to-yellow text-black">
-        <img src="croatia.svg" className="absolute right-0 top-0 w-[550px]" />
-
+      <section className="relative mt-40 flex h-svh w-full flex-col items-center justify-center overflow-clip bg-gradient-to-br from-purple via-pink to-yellow text-black">
         <svg
           className="absolute top-0 h-[150px] w-full rotate-180 fill-black"
           xmlns="http://www.w3.org/2000/svg"
@@ -93,10 +94,12 @@ export default function Home() {
           <polygon points="0,100 100,0 100,100" />
         </svg>
 
-        <div className="grid grid-cols-2 px-64">
-          <div className="flex flex-col">
-            <p className="text-5xl font-bold">About Croatia Trends</p>
-            <p className="mt-8 text-xl font-light">
+        <div className="w-full max-w-screen-md px-6">
+          <div className="relative flex max-w-96 flex-col">
+            <p className="text-3xl font-bold md:text-4xl lg:text-5xl">
+              About <br /> Croatia Trends
+            </p>
+            <p className="mt-8 text-base font-light md:text-lg lg:text-xl">
               We're a group of fresh minds, passionate about{" "}
               <span className="font-bold">
                 unlocking Croatia's digital story. <br></br>
@@ -110,6 +113,11 @@ export default function Home() {
               <br></br> Let's explore together and make data-driven decisions
               for a brighter tomorrow!
             </p>
+
+            <img
+              src="croatia.svg"
+              className="absolute -bottom-80 left-[500px] max-w-5xl"
+            />
           </div>
         </div>
 
@@ -123,7 +131,7 @@ export default function Home() {
         </svg>
       </section>
 
-      <section className="relative mt-40 w-full">
+      <section className="relative mt-40 w-full overflow-clip pb-1">
         <p className="text-center text-4xl font-bold">Contact</p>
 
         <div className="mt-16 flex items-center justify-center gap-16 px-64">
@@ -146,7 +154,8 @@ export default function Home() {
             <textarea
               placeholder="Message"
               style={{ resize: "none" }}
-              className="h-[125px] w-full rounded-3xl bg-transparent bg-gradient-to-r from-[#2a2b2d]/85 to-[#36333e] px-6 py-2.5 text-white focus:outline-none"
+              className="h-[125px] w-full rounded-3xl bg-transparent bg-gradient-to-r from-[#2a2b2d]/85
+      to-[#36333e] px-6 py-2.5 text-white ring-4 ring-[#1f2023] transition-all focus-within:ring-2 focus-within:ring-purple focus:outline-none"
             />
           </div>
         </div>

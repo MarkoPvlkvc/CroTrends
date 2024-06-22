@@ -1,6 +1,8 @@
+import { LegacyRef, MutableRefObject } from "react";
+
 const Footer = () => {
   return (
-    <footer className="mx-auto mt-40 w-full max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8">
+    <footer className="mt-40 w-full overflow-hidden border-t-[2px] border-[#202128] bg-container px-4 py-10 sm:px-6 lg:px-8">
       {/* Grid */}
       <div className="text-center">
         <div className="flex justify-center">
@@ -23,7 +25,8 @@ const Footer = () => {
         <div className="mt-3 space-x-2">
           <a
             className="text-gray-500 hover:bg-gray-50 inline-flex size-8 items-center justify-center gap-x-2 rounded-full border border-transparent text-sm font-semibold disabled:pointer-events-none disabled:opacity-50"
-            href="#"
+            href="https://github.com/MarkoPvlkvc/CroTrends"
+            target="_blank"
           >
             <svg
               className="size-3.5 flex-shrink-0"
