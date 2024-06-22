@@ -12,10 +12,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-2 z-20 grid h-fit w-fit grid-cols-[auto_1fr_auto] items-center gap-32 rounded-full bg-black/75 p-3 backdrop-blur-lg">
+    <nav className="sticky top-2 z-20 grid h-fit w-[85%] grid-cols-[auto_1fr] items-center gap-32 rounded-full bg-black/75 p-3 backdrop-blur-lg lg:w-fit lg:grid-cols-[auto_1fr_auto]">
       <img src="CroTrends-cropped.svg" className="h-full py-1.5 pl-4" />
 
-      <div className="flex justify-center gap-8 text-xl font-medium text-gray">
+      <div className="hidden justify-center gap-8 text-xl font-medium text-gray lg:flex">
         <button className="text-white">Home</button>
         <button className="bg-transparent transition-colors hover:text-white">
           How it works
@@ -30,11 +30,13 @@ const Navbar = () => {
 
       <Button text="Explore" className="hidden lg:block" />
 
-      <div
-        onClick={handleDropdownToggle}
-        className="relative flex size-10 items-center justify-center rounded-full bg-[#1f2023] hover:cursor-pointer lg:hidden"
-      >
-        <Menu className="size-5 text-gray" />
+      <div className="relative justify-self-end lg:hidden">
+        <button
+          onClick={handleDropdownToggle}
+          className="flex size-10 items-center justify-center rounded-full bg-[#1f2023] hover:cursor-pointer"
+        >
+          <Menu className="size-5 text-gray" />
+        </button>
 
         <div
           className={`${isDropdownOpen ? "block" : "hidden"} absolute right-0 top-14 rounded-3xl bg-[#1f2023] pt-4 font-medium text-gray backdrop-blur-lg`}

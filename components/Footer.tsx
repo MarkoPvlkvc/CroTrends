@@ -2,7 +2,7 @@ import { LegacyRef, MutableRefObject } from "react";
 
 const Footer = () => {
   return (
-    <footer className="mt-40 w-full overflow-hidden border-t-[2px] border-[#202128] bg-container px-4 py-10 sm:px-6 lg:px-8">
+    <footer className="mt-24 w-full overflow-hidden border-t-[2px] border-[#202128] bg-container px-4 py-10 sm:px-6 md:mt-32 lg:mt-40 lg:px-8">
       {/* Grid */}
       <div className="text-center">
         <div className="flex justify-center">

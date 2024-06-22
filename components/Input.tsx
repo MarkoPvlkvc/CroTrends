@@ -14,7 +14,7 @@ const Input = ({
     <div
       className={cn(
         `
-      flex w-fit items-center gap-12 rounded-full px-6 ring-4 ring-[#1f2023]
+      flex w-fit items-center rounded-full px-6 ring-4 ring-[#1f2023]
       transition-all focus-within:ring-2 focus-within:ring-purple focus:outline-none
       `,
         className,

@@ -9,25 +9,26 @@ export default function Home() {
   const words = ["Pulse", "Rhythm", "Spirit", "Beat"];
 
   return (
-    <main className="relative flex flex-col items-center pt-20">
-      <div
-        style={{ clipPath: "polygon(0 70%, 100% 0, 100% 30%, 0 100%)" }}
-        className="absolute top-[10%] h-[700px] w-full bg-gradient-to-tr from-purple via-pink to-yellow"
-      />
+    <main className="relative flex flex-col items-center pt-5 md:pt-10 lg:pt-20">
+      <div className="clip-rectangle absolute top-[10%] hidden h-[300px] w-full bg-gradient-to-tr from-purple via-pink to-yellow md:block md:h-[500px] lg:h-[700px]" />
 
       <Navbar />
 
-      <section className="relative h-[calc(100svh-140px)] overflow-clip">
-        <div className="flex h-full w-full justify-center gap-32 pt-20">
+      <section className="relative h-fit overflow-hidden">
+        <div className="flex h-full w-full flex-col justify-center gap-9 px-6 pt-14 md:flex-row md:gap-16 md:px-16 md:pt-16 lg:gap-32 lg:pt-20">
           <div className="flex w-min flex-col justify-self-end">
-            <div className="text-6xl font-bold">
+            <div className="text-4xl font-bold md:text-5xl lg:text-6xl">
               Unlock Croatia&apos;s{" "}
-              <FlipWords words={words} className="text-white" />
+              <FlipWords
+                words={words}
+                className="hidden text-white lg:inline-block"
+              />
+              <span className="inline-block lg:hidden">Pulse</span>
             </div>
-            <p className="mt-6 text-xl text-gray">
-              Dive into the Trends Shaping Our Nation!
+            <p className="mt-2 text-base text-gray md:mt-4 md:text-lg lg:mt-6 lg:text-xl">
+              Dive into the Trends <br /> Shaping Our Nation!
             </p>
-            <div className="mt-12 flex items-center gap-6">
+            <div className="mt-8 flex items-center gap-6 md:mt-10 lg:mt-12">
               <Button text="Explore" className="bg-purple" />
               <button className="flex gap-2 text-nowrap bg-transparent font-semibold text-purple">
                 How it works <ArrowRight />
@@ -35,48 +36,50 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex h-fit flex-col items-center justify-center rounded-3xl border-[2px] border-white/10 bg-container px-9 py-16 backdrop-blur-lg">
+          <div className="mt-6 flex h-fit flex-col items-center justify-center rounded-3xl border-[2px] border-white/10 bg-container px-9 py-16 backdrop-blur-lg md:mt-0">
             <Input
               text="Search for trends..."
               className="bg-gradient-to-r from-gray/20 via-gray/20 to-purple/30"
             />
 
-            <img src="home_chart.svg" className="mt-12 w-[400px]" />
+            <img src="home_chart.svg" className="mt-12 w-72 md:w-96" />
           </div>
         </div>
       </section>
 
-      <section className="relative mt-40 flex flex-col items-center overflow-clip">
-        <div className="relative px-6">
-          <p className="text-center text-4xl font-bold">How it works</p>
+      <section className="relative mt-24 flex flex-col items-center overflow-hidden md:mt-32 lg:mt-40">
+        <div className="px-6">
+          <p className="text-center text-2xl font-bold md:text-3xl lg:text-4xl">
+            How it works
+          </p>
 
-          <div className="mt-16 flex gap-16">
-            <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container p-9">
-              <FileText className="mt-6 size-16 stroke-[0.5] text-purple" />
-              <p className="mt-10 text-nowrap text-2xl font-semibold">
+          <div className="mt-9 flex flex-wrap justify-center gap-x-16 gap-y-9 px-6 md:mt-12 lg:mt-16">
+            <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container px-6 py-9 md:px-9">
+              <FileText className="mt-6 size-14 stroke-[0.5] text-purple md:size-16" />
+              <p className="mt-10 text-nowrap text-xl font-semibold md:text-2xl">
                 Data Scraping
               </p>
-              <p className="mt-6 text-center text-gray">
+              <p className="mt-6 max-w-44 text-center text-xs text-gray md:text-base">
                 We gather Croatia&apos;s online data quickly and accurately
               </p>
             </div>
 
-            <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container p-9 before:content-['2']">
-              <Search className="mt-6 size-16 stroke-[0.5] text-purple" />
-              <p className="mt-10 text-nowrap text-2xl font-semibold">
+            <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container px-6 py-9 before:content-['2'] md:p-9 md:px-9">
+              <Search className="mt-6 size-14 stroke-[0.5] text-purple md:size-16" />
+              <p className="mt-10 text-nowrap text-xl font-semibold md:text-2xl">
                 Searching
               </p>
-              <p className="mt-6 text-center text-gray">
+              <p className="mt-6 max-w-44 text-center text-xs text-gray md:text-base">
                 Enter your prompt, and we&apos;ll find the data in our database.
               </p>
             </div>
 
-            <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container p-9 before:content-['3']">
-              <TrendingUp className="mt-6 size-16 stroke-[0.5] text-purple" />
-              <p className="mt-10 text-nowrap text-2xl font-semibold">
+            <div className="card_number relative flex w-[250px] flex-col items-center rounded-3xl border-[2px] border-white/10 bg-container px-6 py-9 before:content-['3'] md:p-9 md:px-9">
+              <TrendingUp className="mt-6 size-14 stroke-[0.5] text-purple md:size-16" />
+              <p className="mt-10 text-nowrap text-xl font-semibold md:text-2xl">
                 Visualizing
               </p>
-              <p className="mt-6 text-center text-gray">
+              <p className="mt-6 max-w-44 text-center text-xs text-gray md:text-base">
                 See clear charts showing Croatia&apos;s digital data trends.
               </p>
             </div>
@@ -84,16 +87,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative mt-40 flex h-svh w-full flex-col items-center justify-center overflow-clip bg-gradient-to-br from-purple via-pink to-yellow text-black">
-        <svg
-          className="absolute top-0 h-[150px] w-full rotate-180 fill-black"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <polygon points="0,100 100,0 100,100" />
-        </svg>
-
+      <section className="lg:clip-about-lg md:clip-about-md clip-about relative mt-24 flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-purple via-pink to-yellow py-24 text-black md:mt-32 md:py-32 lg:mt-40 lg:py-36">
         <div className="w-full max-w-screen-md px-6">
           <div className="relative flex max-w-96 flex-col">
             <p className="text-3xl font-bold md:text-4xl lg:text-5xl">
@@ -120,27 +114,20 @@ export default function Home() {
             />
           </div>
         </div>
-
-        <svg
-          className="absolute bottom-0 h-[150px] w-full translate-y-[-1] rotate-180 fill-black"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <polygon points="0,100 100,0 100,100" />
-        </svg>
       </section>
 
-      <section className="relative mt-40 w-full overflow-clip pb-1">
-        <p className="text-center text-4xl font-bold">Contact</p>
+      <section className="relative mt-24 w-full overflow-hidden pb-1 md:mt-32 lg:mt-40">
+        <p className="text-center text-2xl font-bold md:text-3xl lg:text-4xl">
+          Contact
+        </p>
 
-        <div className="mt-16 flex items-center justify-center gap-16 px-64">
-          <p className="max-w-sm text-4xl font-extralight text-white/50">
-            Got questions? Ideas? Or just want to chat?{" "}
+        <div className="mt-9 flex flex-col items-center justify-center gap-16 px-6 md:mt-12 md:flex-row lg:mt-16">
+          <p className="max-w-sm text-2xl font-extralight text-white/50 md:text-3xl lg:text-4xl">
+            Got questions? Ideas? <br /> Or just want to chat? <br />
             <span className="font-bold text-white">We&apos;re all ears.</span>
           </p>
 
-          <div className="flex w-[350px] flex-col gap-4">
+          <div className="flex w-full max-w-[350px] flex-col gap-4">
             <Input
               hasIcon={false}
               text="Name"
