@@ -21,7 +21,7 @@ export default function Home() {
         <div className="flex h-full w-full justify-center gap-32 pt-20">
           <div className="flex w-min flex-col justify-self-end">
             <div className="text-6xl font-bold">
-              Unlock Croatia's{" "}
+              Unlock Croatia&apos;s{" "}
               <FlipWords words={words} className="text-white" />
             </div>
             <p className="mt-6 text-xl text-gray">
