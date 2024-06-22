@@ -88,7 +88,7 @@ export default function Home() {
       </section>
 
       <section className="lg:clip-about-lg md:clip-about-md clip-about relative mt-24 flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-purple via-pink to-yellow py-24 text-black md:mt-32 md:py-32 lg:mt-40 lg:py-36">
-        <div className="w-full max-w-screen-md px-6">
+        <div className="flex w-full max-w-screen-md justify-center px-6 sm:justify-start sm:px-16">
           <div className="relative flex max-w-96 flex-col">
             <p className="text-3xl font-bold md:text-4xl lg:text-5xl">
               About <br /> Croatia Trends
