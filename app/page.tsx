@@ -57,7 +57,7 @@ export default function Home() {
                 Data Scraping
               </p>
               <p className="mt-6 text-center text-gray">
-                We gather Croatia's online data quickly and accurately
+                We gather Croatia&apos;s online data quickly and accurately
               </p>
             </div>
 
@@ -67,7 +67,7 @@ export default function Home() {
                 Searching
               </p>
               <p className="mt-6 text-center text-gray">
-                Enter your prompt, and we'll find the data in our database.
+                Enter your prompt, and we&apos;ll find the data in our database.
               </p>
             </div>
 
@@ -77,7 +77,7 @@ export default function Home() {
                 Visualizing
               </p>
               <p className="mt-6 text-center text-gray">
-                See clear charts showing Croatia's digital data trends.
+                See clear charts showing Croatia&apos;s digital data trends.
               </p>
             </div>
           </div>
@@ -100,9 +100,9 @@ export default function Home() {
               About <br /> Croatia Trends
             </p>
             <p className="mt-8 text-base font-light md:text-lg lg:text-xl">
-              We're a group of fresh minds, passionate about{" "}
+              We&apos;re a group of fresh minds, passionate about{" "}
               <span className="font-bold">
-                unlocking Croatia's digital story. <br></br>
+                unlocking Croatia&apos;s digital story. <br></br>
                 <br></br>
               </span>{" "}
               We provide you with clear,{" "}
@@ -110,8 +110,8 @@ export default function Home() {
               Google Trends, but tailored{" "}
               <span className="font-bold">exclusively for Croatia.</span>{" "}
               <br></br>
-              <br></br> Let's explore together and make data-driven decisions
-              for a brighter tomorrow!
+              <br></br> Let&apos;s explore together and make data-driven
+              decisions for a brighter tomorrow!
             </p>
 
             <img
@@ -137,7 +137,7 @@ export default function Home() {
         <div className="mt-16 flex items-center justify-center gap-16 px-64">
           <p className="max-w-sm text-4xl font-extralight text-white/50">
             Got questions? Ideas? Or just want to chat?{" "}
-            <span className="font-bold text-white">We're all ears.</span>
+            <span className="font-bold text-white">We&apos;re all ears.</span>
           </p>
 
           <div className="flex w-[350px] flex-col gap-4">
