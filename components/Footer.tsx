@@ -14,7 +14,8 @@ const Footer = () => {
 
         <div className="mt-3">
           <p className="text-gray-500">
-            Croatia's search stats: because stalking data is totally normal 😎📊
+            Croatia&apos;s search stats: because stalking data is totally normal
+            😎📊
           </p>
           <p className="text-gray-500">
             © CroTrends. 2024. All rights reserved.
