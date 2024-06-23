@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-2 z-20 grid h-fit w-[85%] grid-cols-[auto_1fr] items-center gap-32 rounded-full bg-black/75 p-3 backdrop-blur-lg lg:w-fit lg:grid-cols-[auto_1fr_auto]">
-      <img src="CroTrends-cropped.svg" className="h-full py-1.5 pl-4" />
+      <img src="CroTrends-cropped.svg" className="h-10 py-1.5 pl-4" />
 
       <div className="hidden justify-center gap-8 text-xl font-medium text-gray lg:flex">
         <button className="text-white">Home</button>
