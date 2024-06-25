@@ -21,7 +21,6 @@ const Autocomplete = ({
   setParams,
 }: AutocompleteProps) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const [userInput, setUserInput] = useState("");
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);

@@ -58,9 +58,6 @@ const Navbar = () => {
           <button className="w-full px-6 py-2 text-start hover:text-white">
             Contact
           </button>
-          <button className="w-full px-6 py-2 text-start hover:text-white">
-            Explore
-          </button>
           <div className="w-full px-6 py-6">
             <Link href="/explore">
               <button className="rounded-full bg-purple px-6 py-2 font-bold text-black">
