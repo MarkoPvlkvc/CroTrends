@@ -3,14 +3,14 @@ import Input from "@/components/Input";
 import Navbar from "@/components/Navbar";
 import { ArrowRight, FileText, Search, TrendingUp } from "lucide-react";
 import { FlipWords } from "@/components/ui/flip-words";
-import Footer from "@/components/Footer";
+import Link from "next/link";
 
 export default function Home() {
   const words = ["Pulse", "Rhythm", "Spirit", "Beat"];
 
   return (
     <main className="relative flex flex-col items-center pt-5 md:pt-10 lg:pt-20">
-      <div className="clip-rectangle absolute top-[10%] hidden h-[300px] w-full bg-gradient-to-tr from-purple via-pink to-yellow md:block md:h-[500px] lg:h-[700px]" />
+      <div className="absolute top-[275px] hidden h-[500px] w-full bg-gradient-to-tr from-purple via-pink to-yellow clip-rectangle md:block lg:top-[300px] lg:h-[700px]" />
 
       <Navbar />
 
@@ -29,14 +29,16 @@ export default function Home() {
               Dive into the Trends <br /> Shaping Our Nation!
             </p>
             <div className="mt-8 flex items-center gap-6 md:mt-10 lg:mt-12">
-              <Button text="Explore" className="bg-purple" />
+              <Link href="/explore">
+                <Button text="Explore" className="bg-purple" />
+              </Link>
               <button className="flex gap-2 text-nowrap bg-transparent font-semibold text-purple">
                 How it works <ArrowRight />
               </button>
             </div>
           </div>
 
-          <div className="mt-6 flex h-fit flex-col items-center justify-center rounded-3xl border-[2px] border-white/10 bg-container px-9 py-16 backdrop-blur-lg md:mt-0">
+          <div className="mt-6 flex h-fit flex-col items-center justify-center rounded-3xl border-2 border-white/10 bg-container px-9 py-16 backdrop-blur-lg md:mt-0">
             <Input
               text="Search for trends..."
               className="bg-gradient-to-r from-gray/20 via-gray/20 to-purple/30"
@@ -87,7 +89,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="lg:clip-about-lg md:clip-about-md clip-about relative mt-24 flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-purple via-pink to-yellow py-24 text-black md:mt-32 md:py-32 lg:mt-40 lg:py-36">
+      <section className="relative mt-24 flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-purple via-pink to-yellow py-24 text-black clip-about md:mt-32 md:py-32 md:clip-about-md lg:mt-40 lg:py-36 lg:clip-about-lg">
         <div className="flex w-full max-w-screen-md justify-center px-6 sm:justify-start sm:px-16">
           <div className="relative flex max-w-96 flex-col">
             <p className="text-3xl font-bold md:text-4xl lg:text-5xl">
@@ -147,8 +149,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

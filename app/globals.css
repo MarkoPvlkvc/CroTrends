@@ -31,3 +31,8 @@ body {
     font-size: 1.875rem; /* 3xl */
   }
 }
+
+.recharts-wrapper .recharts-cartesian-grid-vertical line:nth-last-child(1),
+.recharts-wrapper .recharts-cartesian-grid-vertical line:nth-last-child(2) {
+  stroke-opacity: 0;
+}

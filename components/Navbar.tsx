@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import { Menu } from "lucide-react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isDropdownOpen, setDropdownIsOpen] = useState(false);
@@ -12,8 +13,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-2 z-20 grid h-fit w-[85%] grid-cols-[auto_1fr] items-center gap-32 rounded-full bg-black/75 p-3 backdrop-blur-lg lg:w-fit lg:grid-cols-[auto_1fr_auto]">
-      <img src="CroTrends-cropped.svg" className="h-10 py-1.5 pl-4" />
+    <nav className="sticky top-2 z-20 grid h-fit w-[85%] max-w-4xl grid-cols-[auto_1fr] items-center rounded-full bg-black/75 p-3 backdrop-blur-lg lg:w-full lg:grid-cols-[auto_1fr_auto]">
+      <Link href="/">
+        <img src="CroTrends-cropped.svg" className="my-1.5 ml-4 h-7" />
+      </Link>
 
       <div className="hidden justify-center gap-8 text-xl font-medium text-gray lg:flex">
         <button className="text-white">Home</button>
@@ -28,7 +31,9 @@ const Navbar = () => {
         </button>
       </div>
 
-      <Button text="Explore" className="hidden lg:block" />
+      <Link href="/explore" className="hidden lg:block">
+        <Button text="Explore" />
+      </Link>
 
       <div className="relative justify-self-end lg:hidden">
         <button
@@ -57,9 +62,11 @@ const Navbar = () => {
             Explore
           </button>
           <div className="w-full px-6 py-6">
-            <button className="rounded-full bg-purple px-6 py-2 font-bold text-black">
-              Explore
-            </button>
+            <Link href="/explore">
+              <button className="rounded-full bg-purple px-6 py-2 font-bold text-black">
+                Explore
+              </button>
+            </Link>
           </div>
         </div>
       </div>
