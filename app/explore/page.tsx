@@ -179,12 +179,14 @@ export default function Explore() {
   ];
 
   return (
-    <Suspense fallback={<div className="text-2xl font-bold">Loading...</div>}>
-      <main className="flex flex-col items-center">
-        <nav className="mt-5 grid h-fit w-[85%] max-w-4xl grid-cols-[auto_1fr] items-center rounded-full bg-black/75 backdrop-blur-lg md:mt-10 lg:mt-20 lg:w-full">
-          <Link href="/">
-            <img src="CroTrends-cropped.svg" className="mx-7 my-[18px] h-7" />
-          </Link>
+    <main className="flex flex-col items-center">
+      <nav className="mt-5 grid h-fit w-[85%] max-w-4xl grid-cols-[auto_1fr] items-center rounded-full bg-black/75 backdrop-blur-lg md:mt-10 lg:mt-20 lg:w-full">
+        <Link href="/">
+          <img src="CroTrends-cropped.svg" className="mx-7 my-[18px] h-7" />
+        </Link>
+        <Suspense
+          fallback={<div className="text-2xl font-bold">Loading...</div>}
+        >
           <Autocomplete
             text="Search for trends..."
             className="w-full"
@@ -192,39 +194,43 @@ export default function Explore() {
             params={params}
             setParams={setParams}
           />
-        </nav>
+        </Suspense>
+      </nav>
 
-        <section className="flex w-full flex-col items-center px-6">
-          <div className="mt-9 grid w-full max-w-screen-lg grid-cols-2 gap-2 md:mt-12 lg:mt-20">
-            <div className="flex w-full flex-col justify-center rounded-3xl border-2 border-white/10 bg-container p-5 font-bold transition-all hover:cursor-pointer hover:border-white/50 md:p-7 lg:p-9">
-              <p className="text-lg md:text-xl lg:text-2xl">
-                {params.get("search_term")}
-              </p>
-              <p className="text-sm text-gray md:text-base">Type: Person</p>
-            </div>
-            <div className="flex w-full flex-col justify-center rounded-3xl border-2 border-dashed border-white/5 bg-container/25 p-5 font-bold transition-all hover:cursor-pointer hover:border-white/50 md:p-7 lg:p-9">
-              <p className="flex items-center text-base text-gray md:text-lg lg:text-xl">
-                <Plus className="mr-2" />
-                Compare
-              </p>
-            </div>
-            <div className="col-span-2 flex w-full flex-wrap justify-start gap-2 rounded-3xl border-2 border-white/5 bg-container/25 p-3 font-bold">
-              {Object.keys(activeTimeInterval).map((interval) => (
-                <Button
-                  key={interval}
-                  text={interval}
-                  className={`${activeTimeInterval[interval as TimeInterval] ? "bg-purple disabled:bg-purple/50" : "enabled:hover:bg-white disabled:bg-gray/50"} w-fit transition-all`}
-                  onClick={() => handleButtonClick(interval)}
-                  disabled={loading}
-                />
-              ))}
-            </div>
+      <section className="flex w-full flex-col items-center px-6">
+        <div className="mt-9 grid w-full max-w-screen-lg grid-cols-2 gap-2 md:mt-12 lg:mt-20">
+          <div className="flex w-full flex-col justify-center rounded-3xl border-2 border-white/10 bg-container p-5 font-bold transition-all hover:cursor-pointer hover:border-white/50 md:p-7 lg:p-9">
+            <p className="text-lg md:text-xl lg:text-2xl">
+              {params.get("search_term")}
+            </p>
+            <p className="text-sm text-gray md:text-base">Type: Person</p>
           </div>
-          <div className="mt-9 flex h-[350px] w-full max-w-screen-lg items-center justify-center rounded-3xl border-2 border-white/10 bg-container p-5 md:p-7 lg:p-9">
+          <div className="flex w-full flex-col justify-center rounded-3xl border-2 border-dashed border-white/5 bg-container/25 p-5 font-bold transition-all hover:cursor-pointer hover:border-white/50 md:p-7 lg:p-9">
+            <p className="flex items-center text-base text-gray md:text-lg lg:text-xl">
+              <Plus className="mr-2" />
+              Compare
+            </p>
+          </div>
+          <div className="col-span-2 flex w-full flex-wrap justify-start gap-2 rounded-3xl border-2 border-white/5 bg-container/25 p-3 font-bold">
+            {Object.keys(activeTimeInterval).map((interval) => (
+              <Button
+                key={interval}
+                text={interval}
+                className={`${activeTimeInterval[interval as TimeInterval] ? "bg-purple disabled:bg-purple/50" : "enabled:hover:bg-white disabled:bg-gray/50"} w-fit transition-all`}
+                onClick={() => handleButtonClick(interval)}
+                disabled={loading}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="mt-9 flex h-[350px] w-full max-w-screen-lg items-center justify-center rounded-3xl border-2 border-white/10 bg-container p-5 md:p-7 lg:p-9">
+          <Suspense
+            fallback={<div className="text-2xl font-bold">Loading...</div>}
+          >
             <Graph terms={terms} loading={loading} error={error} />
-          </div>
-        </section>
-      </main>
-    </Suspense>
+          </Suspense>
+        </div>
+      </section>
+    </main>
   );
 }
