@@ -200,9 +200,13 @@ export default function Explore() {
       <section className="flex w-full flex-col items-center px-6">
         <div className="mt-9 grid w-full max-w-screen-lg grid-cols-2 gap-2 md:mt-12 lg:mt-20">
           <div className="flex w-full flex-col justify-center rounded-3xl border-2 border-white/10 bg-container p-5 font-bold transition-all hover:cursor-pointer hover:border-white/50 md:p-7 lg:p-9">
-            <p className="text-lg md:text-xl lg:text-2xl">
-              {params.get("search_term")}
-            </p>
+            <Suspense
+              fallback={<div className="text-2xl font-bold">Loading...</div>}
+            >
+              <p className="text-lg md:text-xl lg:text-2xl">
+                {params.get("search_term")}
+              </p>
+            </Suspense>
             <p className="text-sm text-gray md:text-base">Type: Person</p>
           </div>
           <div className="flex w-full flex-col justify-center rounded-3xl border-2 border-dashed border-white/5 bg-container/25 p-5 font-bold transition-all hover:cursor-pointer hover:border-white/50 md:p-7 lg:p-9">
