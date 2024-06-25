@@ -50,7 +50,7 @@ interface TermData {
 
 type TimeInterval = "All Time" | "Year" | "Month" | "Week";
 
-export default function Explore() {
+const ExploreClient = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -184,29 +184,21 @@ export default function Explore() {
         <Link href="/">
           <img src="CroTrends-cropped.svg" className="mx-7 my-[18px] h-7" />
         </Link>
-        <Suspense
-          fallback={<div className="text-2xl font-bold">Loading...</div>}
-        >
-          <Autocomplete
-            text="Search for trends..."
-            className="w-full"
-            suggestions={suggestions}
-            params={params}
-            setParams={setParams}
-          />
-        </Suspense>
+        <Autocomplete
+          text="Search for trends..."
+          className="w-full"
+          suggestions={suggestions}
+          params={params}
+          setParams={setParams}
+        />
       </nav>
 
       <section className="flex w-full flex-col items-center px-6">
         <div className="mt-9 grid w-full max-w-screen-lg grid-cols-2 gap-2 md:mt-12 lg:mt-20">
           <div className="flex w-full flex-col justify-center rounded-3xl border-2 border-white/10 bg-container p-5 font-bold transition-all hover:cursor-pointer hover:border-white/50 md:p-7 lg:p-9">
-            <Suspense
-              fallback={<div className="text-2xl font-bold">Loading...</div>}
-            >
-              <p className="text-lg md:text-xl lg:text-2xl">
-                {params.get("search_term")}
-              </p>
-            </Suspense>
+            <p className="text-lg md:text-xl lg:text-2xl">
+              {params.get("search_term")}
+            </p>
             <p className="text-sm text-gray md:text-base">Type: Person</p>
           </div>
           <div className="flex w-full flex-col justify-center rounded-3xl border-2 border-dashed border-white/5 bg-container/25 p-5 font-bold transition-all hover:cursor-pointer hover:border-white/50 md:p-7 lg:p-9">
@@ -228,13 +220,17 @@ export default function Explore() {
           </div>
         </div>
         <div className="mt-9 flex h-[350px] w-full max-w-screen-lg items-center justify-center rounded-3xl border-2 border-white/10 bg-container p-5 md:p-7 lg:p-9">
-          <Suspense
-            fallback={<div className="text-2xl font-bold">Loading...</div>}
-          >
-            <Graph terms={terms} loading={loading} error={error} />
-          </Suspense>
+          <Graph terms={terms} loading={loading} error={error} />
         </div>
       </section>
     </main>
+  );
+};
+
+export default function Explore() {
+  return (
+    <Suspense fallback={<div className="text-2xl font-bold">Loading...</div>}>
+      <ExploreClient />
+    </Suspense>
   );
 }
