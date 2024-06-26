@@ -12,21 +12,50 @@ const Navbar = () => {
     setDropdownIsOpen((prev) => !prev);
   };
 
+  const handleLinkClick = (
+    event: React.MouseEvent<HTMLElement>,
+    targetId: string,
+  ) => {
+    event?.preventDefault();
+
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="sticky top-2 z-20 grid h-fit w-[85%] max-w-4xl grid-cols-[auto_1fr] items-center rounded-full bg-black/75 p-3 backdrop-blur-lg lg:w-full lg:grid-cols-[auto_1fr_auto]">
       <Link href="/">
-        <img src="CroTrends-cropped.svg" className="my-1.5 ml-4 h-7" />
+        <img
+          src="CroTrends-cropped.svg"
+          className="pointer-events-none my-1.5 ml-4 h-7 select-none"
+        />
       </Link>
 
       <div className="hidden justify-center gap-8 text-xl font-medium text-gray lg:flex">
-        <button className="text-white">Home</button>
-        <button className="bg-transparent transition-colors hover:text-white">
+        <button
+          onClick={(event) => handleLinkClick(event, "#home")}
+          className="bg-transparent transition-colors hover:text-white"
+        >
+          Home
+        </button>
+        <button
+          onClick={(event) => handleLinkClick(event, "#howItWorks")}
+          className="bg-transparent transition-colors hover:text-white"
+        >
           How it works
         </button>
-        <button className="bg-transparent transition-colors hover:text-white">
+        <button
+          onClick={(event) => handleLinkClick(event, "#about")}
+          className="bg-transparent transition-colors hover:text-white"
+        >
           About
         </button>
-        <button className="bg-transparent transition-colors hover:text-white">
+        <button
+          onClick={(event) => handleLinkClick(event, "#contact")}
+          className="bg-transparent transition-colors hover:text-white"
+        >
           Contact
         </button>
       </div>

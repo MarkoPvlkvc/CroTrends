@@ -4,12 +4,16 @@ import Navbar from "@/components/Navbar";
 import { ArrowRight, FileText, Search, TrendingUp } from "lucide-react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Link from "next/link";
+import ButtonSecondary from "@/components/ButtonSecondary";
 
 export default function Home() {
   const words = ["Pulse", "Rhythm", "Spirit", "Beat"];
 
   return (
-    <main className="relative flex flex-col items-center pt-5 md:pt-10 lg:pt-20">
+    <main
+      id="home"
+      className="relative flex flex-col items-center pt-5 md:pt-10 lg:pt-20"
+    >
       <div className="absolute top-[275px] hidden h-[500px] w-full bg-gradient-to-tr from-purple via-pink to-yellow clip-rectangle md:block lg:top-[300px] lg:h-[700px]" />
 
       <Navbar />
@@ -32,9 +36,7 @@ export default function Home() {
               <Link href="/explore">
                 <Button text="Explore" className="bg-purple" />
               </Link>
-              <button className="flex gap-2 text-nowrap bg-transparent font-semibold text-purple">
-                How it works <ArrowRight />
-              </button>
+              <ButtonSecondary text="How it works" href="#howItWorks" />
             </div>
           </div>
 
@@ -44,13 +46,19 @@ export default function Home() {
               className="bg-gradient-to-r from-gray/20 via-gray/20 to-purple/30"
             />
 
-            <img src="home_chart.svg" className="mt-12 w-72 md:w-96" />
+            <img
+              src="home_chart.svg"
+              className="pointer-events-none mt-12 w-72 select-none md:w-96"
+            />
           </div>
         </div>
       </section>
 
-      <section className="relative mt-24 flex flex-col items-center overflow-hidden md:mt-32 lg:mt-40">
-        <div className="px-6">
+      <section
+        id="howItWorks"
+        className="relative flex flex-col items-center overflow-hidden"
+      >
+        <div className="mt-24 px-6 md:mt-32 lg:mt-40">
           <p className="text-center text-2xl font-bold md:text-3xl lg:text-4xl">
             How it works
           </p>
@@ -89,7 +97,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative mt-24 flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-purple via-pink to-yellow py-24 text-black clip-about md:mt-32 md:py-32 md:clip-about-md lg:mt-40 lg:py-36 lg:clip-about-lg">
+      <section
+        id="about"
+        className="relative mt-24 flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-purple via-pink to-yellow py-24 text-black clip-about md:mt-32 md:py-32 md:clip-about-md lg:mt-40 lg:py-36 lg:clip-about-lg"
+      >
         <div className="flex w-full max-w-screen-md justify-center px-6 sm:justify-start sm:px-16">
           <div className="relative flex max-w-96 flex-col">
             <p className="text-3xl font-bold md:text-4xl lg:text-5xl">
@@ -118,8 +129,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative mt-24 w-full overflow-hidden pb-1 md:mt-32 lg:mt-40">
-        <p className="text-center text-2xl font-bold md:text-3xl lg:text-4xl">
+      <section id="contact" className="relative w-full overflow-hidden pb-1">
+        <p className="mt-24 text-center text-2xl font-bold md:mt-32 md:text-3xl  lg:mt-40 lg:text-4xl">
           Contact
         </p>
 
