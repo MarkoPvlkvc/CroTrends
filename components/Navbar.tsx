@@ -75,16 +75,28 @@ const Navbar = () => {
         <div
           className={`${isDropdownOpen ? "block" : "hidden"} absolute right-0 top-14 rounded-3xl bg-[#1f2023] pt-4 font-medium text-gray backdrop-blur-lg`}
         >
-          <button className="w-full px-6 py-2 text-start hover:text-white">
+          <button
+            onClick={(event) => handleLinkClick(event, "#home")}
+            className="w-full px-6 py-2 text-start hover:text-white"
+          >
             Home
           </button>
-          <button className="w-full text-nowrap px-6 py-2 text-start hover:text-white">
+          <button
+            onClick={(event) => handleLinkClick(event, "#howItWorks")}
+            className="w-full text-nowrap px-6 py-2 text-start hover:text-white"
+          >
             How it works
           </button>
-          <button className="w-full px-6 py-2 text-start hover:text-white">
+          <button
+            onClick={(event) => handleLinkClick(event, "#about")}
+            className="w-full px-6 py-2 text-start hover:text-white"
+          >
             About
           </button>
-          <button className="w-full px-6 py-2 text-start hover:text-white">
+          <button
+            onClick={(event) => handleLinkClick(event, "#contact")}
+            className="w-full px-6 py-2 text-start hover:text-white"
+          >
             Contact
           </button>
           <div className="w-full px-6 py-6">
