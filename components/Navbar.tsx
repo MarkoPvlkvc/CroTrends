@@ -26,12 +26,12 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-2 z-20 grid h-fit w-[85%] max-w-4xl grid-cols-[auto_1fr] items-center rounded-full bg-black/75 p-3 backdrop-blur-lg lg:w-full lg:grid-cols-[auto_1fr_auto]">
-      <Link href="/">
+      <button onClick={(event) => handleLinkClick(event, "#home")}>
         <img
           src="CroTrends-cropped.svg"
           className="pointer-events-none my-1.5 ml-4 h-7 select-none"
         />
-      </Link>
+      </button>
 
       <div className="hidden justify-center gap-8 text-xl font-medium text-gray lg:flex">
         <button

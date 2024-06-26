@@ -6,9 +6,10 @@ const Footer = () => {
       {/* Grid */}
       <div className="text-center">
         <div className="flex justify-center">
-          <a href="#" aria-label="Brand">
-            <img src="CroTrends-cropped.svg" className="size-9" />
-          </a>
+          <img
+            src="CroTrends-cropped.svg"
+            className="pointer-events-none size-9 select-none"
+          />
         </div>
         {/* End Col */}
 
