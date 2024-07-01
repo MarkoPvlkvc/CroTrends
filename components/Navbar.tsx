@@ -22,6 +22,8 @@ const Navbar = () => {
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
+
+    setDropdownIsOpen(false);
   };
 
   return (

@@ -104,7 +104,7 @@ const Graph = ({ terms, loading, error, activeLines }: GraphProps) => {
         <Line
           connectNulls
           type="monotone"
-          dataKey="trendiness"
+          dataKey="article_count"
           stroke={`${activeLines[1] ? "#AB86D3" : "url(#lineGradient)"}`}
           strokeWidth={5}
           fill="#EBECEF"
@@ -120,7 +120,7 @@ const Graph = ({ terms, loading, error, activeLines }: GraphProps) => {
           <Line
             connectNulls
             type="monotone"
-            dataKey="trendiness"
+            dataKey="article_count"
             stroke="#FF8CBC"
             strokeWidth={5}
             fill="#EBECEF"
