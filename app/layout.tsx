@@ -14,9 +14,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.svg" />
-      </head>
       <body className="w-svw bg-black font-inter text-white">
         {children}
         <Footer />

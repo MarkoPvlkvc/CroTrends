@@ -14,23 +14,20 @@ import {
 } from "recharts";
 import { PostgrestError } from "@supabase/supabase-js";
 import { format } from "date-fns";
-
-interface TermData {
-  publication_date: string;
-  article_count: number;
-}
+import { TermData } from "@/interfaces/interfaces";
 
 interface GraphProps {
   terms: TermData[];
   loading: boolean;
   error: PostgrestError | null;
+  activeLines: boolean[];
 }
 
 const dateFormatter = (date: string) => {
   return format(new Date(date), "dd.MM.yyyy");
 };
 
-const Graph = ({ terms, loading, error }: GraphProps) => {
+const Graph = ({ terms, loading, error, activeLines }: GraphProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -107,8 +104,8 @@ const Graph = ({ terms, loading, error }: GraphProps) => {
         <Line
           connectNulls
           type="monotone"
-          dataKey="article_count"
-          stroke="url(#lineGradient)"
+          dataKey="trendiness"
+          stroke={`${activeLines[1] ? "#AB86D3" : "url(#lineGradient)"}`}
           strokeWidth={5}
           fill="#EBECEF"
           dot={{ r: 8, strokeWidth: 0 }}
@@ -118,13 +115,24 @@ const Graph = ({ terms, loading, error }: GraphProps) => {
             r: 8,
             strokeWidth: 3,
           }}
-          onAnimationEnd={() => {
-            console.log("Animation ended");
-          }}
-          onAnimationStart={() => {
-            console.log("Animation started");
-          }}
         />
+        {activeLines[1] && (
+          <Line
+            connectNulls
+            type="monotone"
+            dataKey="trendiness"
+            stroke="#FF8CBC"
+            strokeWidth={5}
+            fill="#EBECEF"
+            dot={{ r: 8, strokeWidth: 0 }}
+            activeDot={{
+              fill: "#1f2023",
+              stroke: "#EBECEF",
+              r: 8,
+              strokeWidth: 3,
+            }}
+          />
+        )}
       </LineChart>
     </ResponsiveContainer>
   );

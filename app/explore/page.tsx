@@ -11,6 +11,7 @@ import { createClient } from "@/utils/supabase/client";
 import { PostgrestError } from "@supabase/supabase-js";
 import Graph from "@/components/Graph";
 import { useRouter, useSearchParams } from "next/navigation";
+import { TermData } from "@/interfaces/interfaces";
 
 /* const mockData = [
   {
@@ -43,11 +44,6 @@ import { useRouter, useSearchParams } from "next/navigation";
   },
 ]; */
 
-interface TermData {
-  publication_date: string;
-  article_count: number;
-}
-
 type TimeInterval = "All Time" | "Year" | "Month" | "Week";
 
 const ExploreClient = () => {
@@ -76,7 +72,14 @@ const ExploreClient = () => {
     Week: false,
   });
 
+  const [focusedLine, setFocuedLine] = useState([true, false, false]);
+  const [activeLines, setActiveLines] = useState([true, false, false]);
+
   const handleButtonClick = (interval: string) => {
+    if (activeTimeInterval[interval as TimeInterval]) {
+      return;
+    }
+
     setActiveTimeInterval({
       "All Time": false,
       Year: false,
@@ -223,7 +226,12 @@ const ExploreClient = () => {
           </div>
         </div>
         <div className="mt-9 flex h-[350px] w-full max-w-screen-lg items-center justify-center rounded-3xl border-2 border-white/10 bg-container p-5 md:p-7 lg:p-9">
-          <Graph terms={terms} loading={loading} error={error} />
+          <Graph
+            terms={terms}
+            loading={loading}
+            error={error}
+            activeLines={activeLines}
+          />
         </div>
       </section>
     </main>
