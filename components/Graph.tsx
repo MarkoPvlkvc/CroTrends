@@ -15,12 +15,13 @@ import {
 import { PostgrestError } from "@supabase/supabase-js";
 import { format } from "date-fns";
 import { TermData } from "@/interfaces/interfaces";
+import { LoaderCircle } from "lucide-react";
 
 interface GraphProps {
   terms: TermData[];
   loading: boolean;
   error: PostgrestError | null;
-  activeLines: boolean[];
+  activeLines: number;
 }
 
 const dateFormatter = (date: string) => {
@@ -29,6 +30,33 @@ const dateFormatter = (date: string) => {
 
 const Graph = ({ terms, loading, error, activeLines }: GraphProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [lineStrokeWidth, setLineStrokeWidth] = useState(5);
+  const [dotRadius, setDotRadius] = useState(8);
+  const [activeDotStrokeWidth, setActiveDotStrokeWidth] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        // md: 768px and above
+        setLineStrokeWidth(5);
+        setDotRadius(8);
+        setActiveDotStrokeWidth(3);
+      } else {
+        setLineStrokeWidth(3);
+        setDotRadius(4);
+        setActiveDotStrokeWidth(2);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (!loading) {
@@ -41,7 +69,7 @@ const Graph = ({ terms, loading, error, activeLines }: GraphProps) => {
   }, [loading]);
 
   if (loading || !isLoaded)
-    return <div className="text-2xl font-bold">Loading...</div>;
+    return <LoaderCircle className="size-9 animate-spin stroke-white" />;
   if (error)
     return <div className="text-2xl font-bold">Error: {error.message}</div>;
 
@@ -51,7 +79,7 @@ const Graph = ({ terms, loading, error, activeLines }: GraphProps) => {
         width={500}
         height={300}
         data={terms}
-        margin={{ top: 0, right: 0, left: -15, bottom: 0 }}
+        margin={{ top: 0, right: 0, left: -32, bottom: 0 }}
       >
         <defs>
           <linearGradient
@@ -104,32 +132,51 @@ const Graph = ({ terms, loading, error, activeLines }: GraphProps) => {
         <Line
           connectNulls
           type="monotone"
-          dataKey="article_count"
-          stroke={`${activeLines[1] ? "#AB86D3" : "url(#lineGradient)"}`}
-          strokeWidth={5}
+          dataKey="Series A"
+          stroke={`${activeLines > 1 ? "#FFDEBD" : "url(#lineGradient)"}`}
+          strokeWidth={lineStrokeWidth}
           fill="#EBECEF"
-          dot={{ r: 8, strokeWidth: 0 }}
+          dot={{ r: dotRadius, strokeWidth: 0 }}
           activeDot={{
             fill: "#1f2023",
             stroke: "#EBECEF",
-            r: 8,
-            strokeWidth: 3,
+            r: dotRadius,
+            strokeWidth: activeDotStrokeWidth,
           }}
         />
-        {activeLines[1] && (
+
+        {activeLines > 1 && (
           <Line
             connectNulls
             type="monotone"
-            dataKey="article_count"
+            dataKey="Series B"
             stroke="#FF8CBC"
-            strokeWidth={5}
+            strokeWidth={lineStrokeWidth}
             fill="#EBECEF"
-            dot={{ r: 8, strokeWidth: 0 }}
+            dot={{ r: dotRadius, strokeWidth: 0 }}
             activeDot={{
               fill: "#1f2023",
               stroke: "#EBECEF",
-              r: 8,
-              strokeWidth: 3,
+              r: dotRadius,
+              strokeWidth: activeDotStrokeWidth,
+            }}
+          />
+        )}
+
+        {activeLines > 2 && (
+          <Line
+            connectNulls
+            type="monotone"
+            dataKey="Series C"
+            stroke="#AB86D3"
+            strokeWidth={lineStrokeWidth}
+            fill="#EBECEF"
+            dot={{ r: dotRadius, strokeWidth: 0 }}
+            activeDot={{
+              fill: "#1f2023",
+              stroke: "#EBECEF",
+              r: dotRadius,
+              strokeWidth: activeDotStrokeWidth,
             }}
           />
         )}

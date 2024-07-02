@@ -1,4 +1,11 @@
 export interface TermData {
-  publication_date: string;
-  article_count: number;
+  period: string;
+  "Series A": number;
+  "Series B": number;
+  "Series C": number;
+}
+
+export interface AutocompleteRef {
+  focus: () => void;
+  select: () => void;
 }

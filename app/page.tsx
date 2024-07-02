@@ -1,7 +1,7 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Navbar from "@/components/Navbar";
-import { ArrowRight, FileText, Search, TrendingUp } from "lucide-react";
+import { FileText, Search, TrendingUp } from "lucide-react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Link from "next/link";
 import ButtonSecondary from "@/components/ButtonSecondary";
