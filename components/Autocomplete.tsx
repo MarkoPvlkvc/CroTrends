@@ -182,7 +182,7 @@ const Autocomplete = forwardRef<AutocompleteRef, AutocompleteProps>(
             stiffness: 400,
             damping: 25,
           }}
-          className="ring-containerBorder absolute left-0 top-1/2 -z-10 w-full overflow-hidden rounded-b-3xl bg-[#1f2023] ring-2"
+          className="absolute left-0 top-1/2 -z-10 w-full overflow-hidden rounded-b-3xl bg-[#1f2023] ring-2 ring-containerBorder"
         >
           <ul className="h-full w-full pt-8 lg:mb-[52px]">
             <li className="px-6 pb-1 text-sm text-gray/50">Results:</li>
@@ -231,5 +231,8 @@ const Autocomplete = forwardRef<AutocompleteRef, AutocompleteProps>(
     );
   },
 );
+
+// Set the display name for better debugging
+Autocomplete.displayName = "Autocomplete";
 
 export default Autocomplete;

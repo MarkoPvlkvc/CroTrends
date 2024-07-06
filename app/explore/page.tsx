@@ -173,13 +173,13 @@ const ExploreClient = () => {
         focusedLine.map((_, index) => index === nonNullTermsCount - 1),
       );
     }
-  }, [params]);
+  }, [params, focusedLine, nonNullTermsCount, supabase]);
 
   // This needs to be after the params useState
   useEffect(() => {
     // Sync URL with initial params
     router.push(`?${params.toString()}`, { scroll: false });
-  }, []);
+  }, [params, router]);
 
   const updateTime = (time_interval: string) => {
     const newParams = new URLSearchParams(params.toString());
@@ -276,7 +276,7 @@ const ExploreClient = () => {
           <button
             onClick={() => handleFocusedLineButtonClick(0)}
             disabled={loading}
-            className={`${focusedLine[0] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-containerBorder ring-4 enabled:hover:ring-[hsl(269,7%,68%)]"}
+            className={`${focusedLine[0] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-4 ring-containerBorder enabled:hover:ring-[hsl(269,7%,68%)]"}
             ${activeLines > 1 ? "bg-gradient-to-tr from-container via-container to-yellow/15 hover:bg-yellow/20" : "bg-container"}
             group relative flex w-full flex-col justify-center rounded-3xl p-5 pr-10 text-start transition-all hover:ring-2 md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
           >
@@ -295,7 +295,7 @@ const ExploreClient = () => {
             <button
               onClick={() => handleFocusedLineButtonClick(1)}
               disabled={loading}
-              className={`${focusedLine[1] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-containerBorder ring-4 enabled:hover:ring-[hsl(269,7%,68%)]"}
+              className={`${focusedLine[1] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-4 ring-containerBorder enabled:hover:ring-[hsl(269,7%,68%)]"}
               group relative flex w-full flex-col justify-center rounded-3xl bg-gradient-to-tr from-container via-container to-pink/15 p-5 pr-10 text-start transition-all hover:bg-pink/20 hover:ring-2 md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
             >
               <p className="flex items-center text-lg font-bold transition-colors group-disabled:text-white/50 md:text-xl lg:text-2xl">
@@ -320,7 +320,7 @@ const ExploreClient = () => {
             <button
               onClick={() => handleFocusedLineButtonClick(2)}
               disabled={loading}
-              className={`${focusedLine[2] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-containerBorder ring-4 enabled:hover:ring-[hsl(269,7%,68%)]"}
+              className={`${focusedLine[2] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-4 ring-containerBorder enabled:hover:ring-[hsl(269,7%,68%)]"}
               group relative flex w-full flex-col justify-center rounded-3xl bg-gradient-to-tr from-container via-container to-purple/15 p-5 pr-10 text-start transition-all hover:bg-purple/20 hover:ring-2 md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
             >
               <p className="flex items-center text-lg font-bold transition-colors group-disabled:text-white/50 md:text-xl lg:text-2xl">
@@ -354,7 +354,7 @@ const ExploreClient = () => {
             </button>
           )}
           <div
-            className={`${activeLines > 1 ? "sm:col-span-3" : "sm:col-span-2"} border-containerElevated flex w-full flex-wrap justify-start gap-2 rounded-3xl border-2 bg-container/25 p-3 font-bold`}
+            className={`${activeLines > 1 ? "sm:col-span-3" : "sm:col-span-2"} flex w-full flex-wrap justify-start gap-2 rounded-3xl border-2 border-containerElevated bg-container/25 p-3 font-bold`}
           >
             {Object.keys(activeTimeInterval).map((interval) => (
               <Button
@@ -367,7 +367,7 @@ const ExploreClient = () => {
             ))}
           </div>
         </div>
-        <div className="border-containerBorder mt-9 flex h-[350px] w-full max-w-screen-lg items-center justify-center rounded-3xl border-2 bg-container p-5 md:p-7 lg:p-9">
+        <div className="mt-9 flex h-[350px] w-full max-w-screen-lg items-center justify-center rounded-3xl border-2 border-containerBorder bg-container p-5 md:p-7 lg:p-9">
           <Graph
             terms={terms}
             loading={loading}
