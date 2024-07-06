@@ -173,13 +173,13 @@ const ExploreClient = () => {
         focusedLine.map((_, index) => index === nonNullTermsCount - 1),
       );
     }
-  }, [params, focusedLine, nonNullTermsCount, supabase]);
+  }, [params]);
 
   // This needs to be after the params useState
   useEffect(() => {
     // Sync URL with initial params
     router.push(`?${params.toString()}`, { scroll: false });
-  }, [params, router]);
+  }, []);
 
   const updateTime = (time_interval: string) => {
     const newParams = new URLSearchParams(params.toString());
