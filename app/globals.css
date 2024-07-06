@@ -36,3 +36,12 @@ body {
 .recharts-wrapper .recharts-cartesian-grid-vertical line:nth-last-child(2) {
   stroke-opacity: 0;
 }
+
+.placeholder-transition::placeholder {
+  transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mask {
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}

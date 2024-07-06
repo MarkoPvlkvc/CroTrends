@@ -18,6 +18,8 @@ const config = {
         pink: "#FF8CBC",
         yellow: "#FFDEBD",
         container: "#161b22e6",
+        containerBorder: "#28292c",
+        containerElevated: "#1f2023",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

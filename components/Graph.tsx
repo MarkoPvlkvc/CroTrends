@@ -69,7 +69,9 @@ const Graph = ({ terms, loading, error, activeLines }: GraphProps) => {
   }, [loading]);
 
   if (loading || !isLoaded)
-    return <LoaderCircle className="size-9 animate-spin stroke-white" />;
+    return (
+      <LoaderCircle className="size-9 animate-spin stroke-white stroke-[2px] md:size-12" />
+    );
   if (error)
     return <div className="text-2xl font-bold">Error: {error.message}</div>;
 

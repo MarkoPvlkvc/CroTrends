@@ -5,6 +5,7 @@ import { FileText, Search, TrendingUp } from "lucide-react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Link from "next/link";
 import ButtonSecondary from "@/components/ButtonSecondary";
+import { motion, useScroll } from "framer-motion";
 
 export default function Home() {
   const words = ["Pulse", "Rhythm", "Spirit", "Beat"];
@@ -40,10 +41,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-6 flex h-fit flex-col items-center justify-center rounded-3xl border-2 border-white/10 bg-container px-9 py-16 backdrop-blur-lg md:mt-0">
+          <div className="border-containerBorder mt-6 flex h-fit flex-col items-center justify-center rounded-3xl border-2 bg-container px-9 py-16 backdrop-blur-lg md:mt-0">
             <Input
               text="Search for trends..."
               className="bg-gradient-to-r from-gray/20 via-gray/20 to-purple/30"
+              disabled={true}
             />
 
             <img
@@ -154,8 +156,8 @@ export default function Home() {
             <textarea
               placeholder="Message"
               style={{ resize: "none" }}
-              className="h-[125px] w-full rounded-3xl bg-transparent bg-gradient-to-r from-[#2a2b2d]/85
-      to-[#36333e] px-6 py-2.5 text-white ring-4 ring-[#1f2023] transition-all focus-within:ring-2 focus-within:ring-purple focus:outline-none"
+              className="ring-containerElevated h-[125px] w-full rounded-3xl bg-transparent bg-gradient-to-r
+      from-[#2a2b2d]/85 to-[#36333e] px-6 py-2.5 text-white ring-4 transition-all focus-within:ring-2 focus-within:ring-purple focus:outline-none"
             />
           </div>
         </div>

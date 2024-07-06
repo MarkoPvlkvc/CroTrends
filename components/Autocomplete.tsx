@@ -152,7 +152,7 @@ const Autocomplete = forwardRef<AutocompleteRef, AutocompleteProps>(
         <input
           ref={inputRef}
           placeholder={text}
-          className="z-10 w-full bg-transparent py-2.5 text-white focus:outline-none disabled:text-white/50 disabled:placeholder:text-gray/50"
+          className="placeholder-transition z-10 w-full bg-transparent py-2.5 text-white placeholder:text-white/60 focus:outline-none disabled:text-white/50 disabled:placeholder:text-gray/50"
           type="text"
           value={userInput}
           onClick={handleInputClick}
@@ -182,9 +182,9 @@ const Autocomplete = forwardRef<AutocompleteRef, AutocompleteProps>(
             stiffness: 400,
             damping: 25,
           }}
-          className="absolute left-0 top-1/2 -z-10 w-full overflow-hidden rounded-b-3xl bg-[#1f2023] ring-2 ring-white/10"
+          className="ring-containerBorder absolute left-0 top-1/2 -z-10 w-full overflow-hidden rounded-b-3xl bg-[#1f2023] ring-2"
         >
-          <ul className="mb-[52px] h-full w-full pt-8">
+          <ul className="h-full w-full pt-8 lg:mb-[52px]">
             <li className="px-6 pb-1 text-sm text-gray/50">Results:</li>
             {filteredSuggestions.map((suggestion, index) => (
               <motion.li

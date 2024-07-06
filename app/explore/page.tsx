@@ -2,7 +2,18 @@
 
 import Autocomplete from "@/components/Autocomplete";
 import React, { Suspense, useEffect, useRef, useState } from "react";
-import { Plus, X } from "lucide-react";
+import {
+  Activity,
+  Asterisk,
+  Circle,
+  Minus,
+  Plus,
+  Square,
+  Tally1,
+  Tally1Icon,
+  Tally3,
+  X,
+} from "lucide-react";
 import Button from "@/components/Button";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
@@ -260,17 +271,22 @@ const ExploreClient = () => {
 
       <section className="flex w-full flex-col items-center px-6">
         <div
-          className={`${activeLines > 1 ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-2"} mt-9 grid w-full max-w-screen-lg gap-2 md:mt-12 lg:mt-20`}
+          className={`${activeLines > 1 ? "sm:grid-cols-3" : "sm:grid-cols-2"} mt-9 grid w-full max-w-screen-lg grid-cols-1 gap-4 md:mt-12 lg:mt-20`}
         >
           <button
             onClick={() => handleFocusedLineButtonClick(0)}
             disabled={loading}
-            className={`${focusedLine[0] ? "border-purple disabled:border-purple/50" : "border-white/10 enabled:hover:border-white/50"} group flex w-full flex-col justify-center rounded-3xl border-2 bg-container p-5 pr-10 text-start font-bold hover:cursor-pointer md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
+            className={`${focusedLine[0] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-containerBorder ring-4 enabled:hover:ring-[hsl(269,7%,68%)]"}
+            ${activeLines > 1 ? "bg-gradient-to-tr from-container via-container to-yellow/15 hover:bg-yellow/20" : "bg-container"}
+            group relative flex w-full flex-col justify-center rounded-3xl p-5 pr-10 text-start transition-all hover:ring-2 md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
           >
-            <p className="text-lg group-disabled:text-white/50 md:text-xl lg:text-2xl">
+            <p className="flex items-center text-lg font-bold transition-colors group-disabled:text-white/50 md:text-xl lg:text-2xl">
+              {activeLines > 1 && (
+                <Activity className="mr-2 size-5 flex-shrink-0 stroke-yellow group-disabled:stroke-yellow/50" />
+              )}
               {params.get("search_term1")}
             </p>
-            <p className="text-sm text-gray group-disabled:text-gray/50 md:text-base">
+            <p className="text-sm font-medium text-gray transition-colors group-disabled:text-gray/50 md:text-base">
               Type: Person
             </p>
           </button>
@@ -279,12 +295,14 @@ const ExploreClient = () => {
             <button
               onClick={() => handleFocusedLineButtonClick(1)}
               disabled={loading}
-              className={`${focusedLine[1] ? "border-purple disabled:border-purple/50" : "border-white/10 enabled:hover:border-white/50"} group relative flex w-full flex-col justify-center rounded-3xl border-2 bg-container p-5 pr-10 text-start font-bold hover:cursor-pointer md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
+              className={`${focusedLine[1] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-containerBorder ring-4 enabled:hover:ring-[hsl(269,7%,68%)]"}
+              group relative flex w-full flex-col justify-center rounded-3xl bg-gradient-to-tr from-container via-container to-pink/15 p-5 pr-10 text-start transition-all hover:bg-pink/20 hover:ring-2 md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
             >
-              <p className="text-lg group-disabled:text-white/50 md:text-xl lg:text-2xl">
+              <p className="flex items-center text-lg font-bold transition-colors group-disabled:text-white/50 md:text-xl lg:text-2xl">
+                <Activity className="mr-2 size-5 flex-shrink-0 stroke-pink group-disabled:stroke-pink/50" />
                 {params.get("search_term2")}
               </p>
-              <p className="text-sm text-gray group-disabled:text-gray/50 md:text-base">
+              <p className="text-sm font-medium text-gray transition-colors group-disabled:text-gray/50 md:text-base">
                 Type: Person
               </p>
 
@@ -302,12 +320,14 @@ const ExploreClient = () => {
             <button
               onClick={() => handleFocusedLineButtonClick(2)}
               disabled={loading}
-              className={`${focusedLine[2] ? "border-purple disabled:border-purple/50" : "border-white/10 enabled:hover:border-white/50"} group relative flex w-full flex-col justify-center rounded-3xl border-2 bg-container p-5 pr-10 text-start font-bold hover:cursor-pointer md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
+              className={`${focusedLine[2] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-containerBorder ring-4 enabled:hover:ring-[hsl(269,7%,68%)]"}
+              group relative flex w-full flex-col justify-center rounded-3xl bg-gradient-to-tr from-container via-container to-purple/15 p-5 pr-10 text-start transition-all hover:bg-purple/20 hover:ring-2 md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
             >
-              <p className="text-lg group-disabled:text-white/50 md:text-xl lg:text-2xl">
+              <p className="flex items-center text-lg font-bold transition-colors group-disabled:text-white/50 md:text-xl lg:text-2xl">
+                <Activity className="mr-2 size-5 flex-shrink-0 stroke-purple group-disabled:stroke-purple/50" />
                 {params.get("search_term3")}
               </p>
-              <p className="text-sm text-gray group-disabled:text-gray/50 md:text-base">
+              <p className="text-sm font-medium text-gray transition-colors group-disabled:text-gray/50 md:text-base">
                 Type: Person
               </p>
 
@@ -325,29 +345,29 @@ const ExploreClient = () => {
             <button
               onClick={() => handleCompareButtonClick()}
               disabled={loading}
-              className={`${focusedLine.indexOf(true) == activeLines ? "border-purple" : "border-white/5 enabled:hover:border-white/50"} group flex w-full flex-col justify-center rounded-3xl border-2 border-dashed bg-container/25 p-5 text-start font-bold hover:cursor-pointer md:p-7 lg:p-9`}
+              className={`${focusedLine.indexOf(true) == activeLines ? "border-purple text-purple" : "border-white/5 text-gray hover:text-[hsl(269,7%,68%)] enabled:hover:border-[hsl(269,7%,68%)]"} group flex w-full flex-col justify-center rounded-3xl border-2 border-dashed bg-container/25 p-5 text-start transition-all md:p-7 lg:p-9`}
             >
-              <p className="flex items-center text-base text-gray group-disabled:text-gray/50 md:text-lg lg:text-xl">
+              <p className="flex items-center font-bold group-disabled:text-gray/50 md:text-lg lg:text-xl">
                 <Plus className="mr-2" />
                 Compare
               </p>
             </button>
           )}
           <div
-            className={`${activeLines > 1 ? "sm:col-span-3" : "sm:col-span-2"} flex w-full flex-wrap justify-start gap-2 rounded-3xl border-2 border-white/5 bg-container/25 p-3 font-bold`}
+            className={`${activeLines > 1 ? "sm:col-span-3" : "sm:col-span-2"} border-containerElevated flex w-full flex-wrap justify-start gap-2 rounded-3xl border-2 bg-container/25 p-3 font-bold`}
           >
             {Object.keys(activeTimeInterval).map((interval) => (
               <Button
                 key={interval}
                 text={interval}
-                className={`${activeTimeInterval[interval as TimeInterval] ? "bg-purple disabled:bg-purple/50" : "enabled:hover:bg-white disabled:bg-gray/50"} w-fit`}
+                className={`${activeTimeInterval[interval as TimeInterval] ? "bg-purple disabled:bg-purple/50" : "enabled:hover:bg-[hsl(269,7%,68%)] disabled:bg-gray/50"} w-fit disabled:transition-colors`}
                 onClick={() => handleTimeIntervalButtonClick(interval)}
                 disabled={loading}
               />
             ))}
           </div>
         </div>
-        <div className="mt-9 flex h-[350px] w-full max-w-screen-lg items-center justify-center rounded-3xl border-2 border-white/10 bg-container p-5 md:p-7 lg:p-9">
+        <div className="border-containerBorder mt-9 flex h-[350px] w-full max-w-screen-lg items-center justify-center rounded-3xl border-2 bg-container p-5 md:p-7 lg:p-9">
           <Graph
             terms={terms}
             loading={loading}
