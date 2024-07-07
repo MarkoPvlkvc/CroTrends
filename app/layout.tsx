@@ -5,6 +5,10 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "CroTrends",
   description: "Insightful Graphs Exclusively For Croatia",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

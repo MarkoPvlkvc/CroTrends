@@ -173,7 +173,7 @@ const Autocomplete = forwardRef<AutocompleteRef, AutocompleteProps>(
         <motion.div
           initial={{ height: 0 }}
           animate={{
-            height: showSuggestions ? "fit-content" : 0,
+            height: showSuggestions ? "500px" : 0,
           }}
           transition={{
             duration: 0.15,

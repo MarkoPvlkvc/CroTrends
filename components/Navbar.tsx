@@ -66,6 +66,10 @@ const Navbar = () => {
       const handleScroll = () => {
         const secondSection = document.querySelectorAll("section")[1];
 
+        if (!secondSection) {
+          return;
+        }
+
         const rect = secondSection.getBoundingClientRect();
 
         if (rect.top < 10 && !isButtonPurple) {
@@ -149,7 +153,7 @@ const Navbar = () => {
       <Link href="/explore" className="hidden lg:block">
         <Button
           text="Explore"
-          className={`${isButtonPurple ? "bg-purple" : ""} ring-[hsl(269,7%,68%)] hover:bg-[hsl(269,7%,68%)]`}
+          className={`${isButtonPurple ? "bg-purple" : "hover:bg-[hsl(269,7%,68%)]"} ring-[hsl(269,7%,68%)]`}
         />
       </Link>
 
