@@ -96,9 +96,10 @@ const Autocomplete = forwardRef<AutocompleteRef, AutocompleteProps>(
     };
 
     const handleClick = (suggestion: string) => {
+      console.log(suggestion);
       setUserInput(suggestion);
-      setShowSuggestions(false);
       updateTerm(suggestion);
+      setShowSuggestions(false);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -140,35 +141,39 @@ const Autocomplete = forwardRef<AutocompleteRef, AutocompleteProps>(
     };
 
     return (
-      <div
-        className={cn(
-          `
-          relative flex w-fit items-center rounded-full bg-gradient-to-r from-[#232527] via-[#232527]
-          to-[#3e354d] px-6 ring-4 ring-[#1f2023] transition-all focus-within:ring-2 focus-within:ring-purple focus:outline-none
+      <div className="relative">
+        <div
+          className={cn(
+            `
+          relative z-10 flex w-fit items-center rounded-full bg-gradient-to-r from-[#232527]
+          via-[#232527] to-[#3e354d] px-6 ring-4 ring-[#1f2023] transition-all focus-within:ring-2 focus-within:ring-purple focus:outline-none
           `,
-          className,
-        )}
-      >
-        <input
-          ref={inputRef}
-          placeholder={text}
-          className="placeholder-transition z-10 w-full bg-transparent py-2.5 text-white placeholder:text-white/60 focus:outline-none disabled:text-white/50 disabled:placeholder:text-gray/50"
-          type="text"
-          value={userInput}
-          onClick={handleInputClick}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          onBlur={() => {
-            setShowSuggestions(false);
-            onBlur();
-          }}
-          onFocus={() => {
-            setShowSuggestions(true);
-          }}
-          disabled={disabled}
-        />
+            className,
+          )}
+        >
+          <input
+            ref={inputRef}
+            placeholder={text}
+            className="placeholder-transition w-full bg-transparent py-2.5 text-white placeholder:text-white/60 focus:outline-none disabled:text-white/50 disabled:placeholder:text-gray/50"
+            type="text"
+            value={userInput}
+            onClick={handleInputClick}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            onBlur={() => {
+              setShowSuggestions(false);
+              onBlur();
+            }}
+            onFocus={() => {
+              setShowSuggestions(true);
+            }}
+            disabled={disabled}
+          />
 
-        {hasIcon && <Search className="-mr-2 flex-shrink-0 p-0.5 text-white" />}
+          {hasIcon && (
+            <Search className="-mr-2 flex-shrink-0 p-0.5 text-white" />
+          )}
+        </div>
 
         <motion.div
           initial={{ height: 0 }}
@@ -182,7 +187,7 @@ const Autocomplete = forwardRef<AutocompleteRef, AutocompleteProps>(
             stiffness: 400,
             damping: 25,
           }}
-          className="absolute left-0 top-1/2 -z-10 w-full overflow-hidden rounded-b-3xl bg-[#1f2023] ring-2 ring-containerBorder"
+          className="absolute left-0 top-1/2 w-full overflow-hidden rounded-b-3xl bg-[#1f2023] ring-2 ring-containerBorder"
         >
           <ul className="w-full pt-8 lg:mb-[52px]">
             <li className="px-6 pb-1 text-sm text-gray/50">Results:</li>
@@ -196,7 +201,7 @@ const Autocomplete = forwardRef<AutocompleteRef, AutocompleteProps>(
                   duration: 0.15,
                   ease: [0.76, 0, 0.24, 1],
                 }}
-                onClick={() => handleClick(suggestion)}
+                onMouseDown={() => handleClick(suggestion)}
                 className={`${index == activeSuggestionIndex ? "bg-[hsl(225,6%,14%)] pl-9 text-white" : "text-gray"} cursor-pointer px-6 py-2 transition-[padding] last:pb-2 hover:bg-[hsl(225,6%,14%)] hover:text-white`}
               >
                 {suggestion}

@@ -249,7 +249,7 @@ const ExploreClient = () => {
 
   return (
     <main className="flex flex-col items-center">
-      <nav className="z-20 mt-5 grid h-fit w-[85%] max-w-4xl grid-cols-[auto_1fr] items-center rounded-full md:mt-10 lg:mt-20 lg:w-full">
+      <nav className="relative z-20 mt-5 grid h-fit w-[85%] max-w-4xl grid-cols-[auto_1fr] items-center rounded-full md:mt-10 lg:mt-20 lg:w-full">
         <div className="mx-7 my-[18px]">
           <Link href="/">
             <img
