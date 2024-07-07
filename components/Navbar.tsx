@@ -165,7 +165,7 @@ const Navbar = () => {
           initial="hidden"
           animate={isDropdownOpen ? "visible" : "hidden"}
           variants={dropdownVariants}
-          className={`${isDropdownOpen ? "" : "hidden"} absolute right-0 top-14 w-64 overflow-hidden rounded-3xl border-2 border-containerBorder bg-containerElevated font-medium text-gray`}
+          className={`${isDropdownOpen ? "pointer-events-auto" : "pointer-events-none"} absolute right-0 top-14 w-64 origin-top-right overflow-hidden rounded-3xl border-2 border-containerBorder bg-containerElevated font-medium text-gray`}
           ref={dropdownRef}
         >
           <motion.button

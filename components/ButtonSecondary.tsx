@@ -23,7 +23,7 @@ const ButtonSecondary = ({ text, href }: ButtonProps) => {
   return (
     <button
       onClick={(event) => handleLinkClick(event, href)}
-      className="flex gap-2 text-nowrap bg-transparent font-semibold text-purple"
+      className="flex gap-2 text-nowrap bg-transparent py-2 font-semibold text-purple transition-transform hover:rotate-3 hover:scale-105"
     >
       {text} <ArrowRight />
     </button>
