@@ -4,9 +4,10 @@ import { ArrowRight } from "lucide-react";
 
 interface ButtonProps {
   text: string;
+  href: string;
 }
 
-const ButtonSecondary = ({ text }: ButtonProps) => {
+const ButtonSecondary = ({ text, href }: ButtonProps) => {
   const handleLinkClick = (
     event: React.MouseEvent<HTMLElement>,
     targetId: string,
@@ -20,7 +21,10 @@ const ButtonSecondary = ({ text }: ButtonProps) => {
   };
 
   return (
-    <button className="flex gap-2 text-nowrap bg-transparent font-semibold text-purple">
+    <button
+      onClick={(event) => handleLinkClick(event, href)}
+      className="flex gap-2 text-nowrap bg-transparent font-semibold text-purple"
+    >
       {text} <ArrowRight />
     </button>
   );

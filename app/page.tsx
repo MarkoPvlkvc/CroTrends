@@ -37,9 +37,7 @@ export default function Home() {
               <Link href="/explore">
                 <Button text="Explore" className="bg-purple" />
               </Link>
-              <Link href="/how-it-works">
-                <ButtonSecondary text="How it works" />
-              </Link>
+              <ButtonSecondary text="How it works" href="#howItWorks" />
             </div>
           </div>
 
