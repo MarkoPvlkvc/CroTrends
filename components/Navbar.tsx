@@ -156,7 +156,7 @@ const Navbar = () => {
       <div className="relative justify-self-end lg:hidden">
         <button
           onClick={handleDropdownToggle}
-          className="bg-containerElevated flex size-10 items-center justify-center rounded-full hover:cursor-pointer"
+          className="flex size-10 items-center justify-center rounded-full bg-containerElevated hover:cursor-pointer"
         >
           <Menu className="size-5 text-gray" />
         </button>
@@ -165,7 +165,7 @@ const Navbar = () => {
           initial="hidden"
           animate={isDropdownOpen ? "visible" : "hidden"}
           variants={dropdownVariants}
-          className={`border-containerBorder bg-containerElevated absolute right-0 top-14 w-64 overflow-hidden rounded-3xl border-2 font-medium text-gray`}
+          className={`${isDropdownOpen ? "" : "hidden"} absolute right-0 top-14 w-64 overflow-hidden rounded-3xl border-2 border-containerBorder bg-containerElevated font-medium text-gray`}
           ref={dropdownRef}
         >
           <motion.button
