@@ -250,12 +250,14 @@ const ExploreClient = () => {
   return (
     <main className="flex flex-col items-center">
       <nav className="z-20 mt-5 grid h-fit w-[85%] max-w-4xl grid-cols-[auto_1fr] items-center rounded-full md:mt-10 lg:mt-20 lg:w-full">
-        <Link href="/">
-          <img
-            src="CroTrends-cropped.svg"
-            className="pointer-events-none mx-7 my-[18px] h-7 select-none"
-          />
-        </Link>
+        <div className="mx-7 my-[18px]">
+          <Link href="/">
+            <img
+              src="CroTrends-cropped.svg"
+              className="pointer-events-none h-7 select-none"
+            />
+          </Link>
+        </div>
         <Autocomplete
           ref={autocompleteRef}
           text="Search for trends..."

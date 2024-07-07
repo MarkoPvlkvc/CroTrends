@@ -173,7 +173,7 @@ const Autocomplete = forwardRef<AutocompleteRef, AutocompleteProps>(
         <motion.div
           initial={{ height: 0 }}
           animate={{
-            height: showSuggestions ? "500px" : 0,
+            height: showSuggestions ? "fit-content" : 0,
           }}
           transition={{
             duration: 0.15,
@@ -184,7 +184,7 @@ const Autocomplete = forwardRef<AutocompleteRef, AutocompleteProps>(
           }}
           className="absolute left-0 top-1/2 -z-10 w-full overflow-hidden rounded-b-3xl bg-[#1f2023] ring-2 ring-containerBorder"
         >
-          <ul className="h-full w-full pt-8 lg:mb-[52px]">
+          <ul className="w-full pt-8 lg:mb-[52px]">
             <li className="px-6 pb-1 text-sm text-gray/50">Results:</li>
             {filteredSuggestions.map((suggestion, index) => (
               <motion.li
