@@ -116,7 +116,10 @@ const Navbar = () => {
       style={{ WebkitBackdropFilter: "blur(16px)" }}
       className="sticky top-2 z-20 grid h-fit w-[85%] max-w-4xl grid-cols-[auto_1fr] items-center rounded-full bg-black/75 p-3 backdrop-blur-lg lg:w-full lg:grid-cols-[auto_1fr_auto]"
     >
-      <button onClick={(event) => handleLinkClick(event, "#home")}>
+      <button
+        onClick={(event) => handleLinkClick(event, "#home")}
+        className="transition-transform hover:rotate-6 hover:scale-105"
+      >
         <img
           src="CroTrends-cropped.svg"
           className="pointer-events-none my-1.5 ml-4 h-7 select-none"
@@ -126,25 +129,25 @@ const Navbar = () => {
       <div className="hidden justify-center gap-8 text-xl font-medium text-gray lg:flex">
         <button
           onClick={(event) => handleLinkClick(event, "#home")}
-          className="bg-transparent transition-colors hover:text-white"
+          className="bg-transparent py-1 transition-all hover:rotate-3 hover:scale-105 hover:text-white"
         >
           Home
         </button>
         <button
           onClick={(event) => handleLinkClick(event, "#howItWorks")}
-          className="bg-transparent transition-colors hover:text-white"
+          className="bg-transparent py-1 transition-all hover:rotate-3 hover:scale-105 hover:text-white"
         >
           How it works
         </button>
         <button
           onClick={(event) => handleLinkClick(event, "#about")}
-          className="bg-transparent transition-colors hover:text-white"
+          className="bg-transparent py-1 transition-all hover:rotate-3 hover:scale-105 hover:text-white"
         >
           About
         </button>
         <button
           onClick={(event) => handleLinkClick(event, "#contact")}
-          className="bg-transparent transition-colors hover:text-white"
+          className="bg-transparent py-1 transition-all hover:rotate-3 hover:scale-105 hover:text-white"
         >
           Contact
         </button>
