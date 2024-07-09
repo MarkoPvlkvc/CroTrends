@@ -21,6 +21,7 @@ import { PostgrestError } from "@supabase/supabase-js";
 import Graph from "@/components/Graph";
 import { useRouter, useSearchParams } from "next/navigation";
 import { TermData, AutocompleteRef } from "@/interfaces/interfaces";
+import SearchTermButton from "@/components/SearchTermButton";
 
 /* const mockData = [
   {
@@ -190,13 +191,23 @@ const ExploreClient = () => {
 
   const deleteTerm = (search_term: string) => {
     const newParams = new URLSearchParams(params.toString());
+    const terms = ["search_term1", "search_term2", "search_term3"];
 
-    const searchTerm3 = newParams.get("search_term3");
-    if (search_term == "search_term2" && searchTerm3) {
-      newParams.set("search_term2", searchTerm3);
-      newParams.delete("search_term3");
-    } else {
-      newParams.delete(search_term);
+    // Find the index of the term to delete
+    const indexToDelete = terms.indexOf(search_term);
+
+    if (indexToDelete > -1) {
+      // Shift the terms to fill the gap
+      for (let i = indexToDelete; i < terms.length - 1; i++) {
+        const nextTerm = terms[i + 1];
+        if (newParams.has(nextTerm)) {
+          newParams.set(terms[i], newParams.get(nextTerm) as string);
+        } else {
+          newParams.delete(terms[i]);
+          break;
+        }
+      }
+      newParams.delete(terms[terms.length - 1]);
     }
 
     setParams(newParams);
@@ -247,6 +258,13 @@ const ExploreClient = () => {
     "Hrvatski nogometni savez",
   ];
 
+  const colors = ["yellow", "pink", "purple"];
+  const searchTerms = [
+    params.get("search_term1") || "",
+    params.get("search_term2") || "",
+    params.get("search_term3") || "",
+  ];
+
   return (
     <main className="flex flex-col items-center">
       <nav className="relative z-20 mt-5 grid h-fit w-[85%] max-w-4xl grid-cols-[auto_1fr] items-center rounded-full md:mt-10 lg:mt-20 lg:w-full">
@@ -275,73 +293,18 @@ const ExploreClient = () => {
         <div
           className={`${activeLines > 1 ? "sm:grid-cols-3" : "sm:grid-cols-2"} mt-9 grid w-full max-w-screen-lg grid-cols-1 gap-4 md:mt-12 lg:mt-20`}
         >
-          <button
-            onClick={() => handleFocusedLineButtonClick(0)}
-            disabled={loading}
-            className={`${focusedLine[0] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-4 ring-containerBorder enabled:hover:ring-[hsl(269,7%,68%)]"}
-            ${activeLines > 1 ? "bg-gradient-to-tr from-container via-container to-yellow/15 hover:bg-yellow/20" : "bg-container"}
-            group relative flex w-full flex-col justify-center rounded-3xl p-5 pr-10 text-start transition-all hover:ring-2 md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
-          >
-            <p className="flex items-center text-lg font-bold transition-colors group-disabled:text-white/50 md:text-xl lg:text-2xl">
-              {activeLines > 1 && (
-                <Activity className="mr-2 size-5 flex-shrink-0 stroke-yellow group-disabled:stroke-yellow/50" />
-              )}
-              {params.get("search_term1")}
-            </p>
-            <p className="text-sm font-medium text-gray transition-colors group-disabled:text-gray/50 md:text-base">
-              Type: Person
-            </p>
-          </button>
-
-          {activeLines > 1 && (
-            <button
-              onClick={() => handleFocusedLineButtonClick(1)}
+          {searchTerms.slice(0, activeLines).map((search_term, index) => (
+            <SearchTermButton
+              key={search_term}
+              search_term={search_term}
+              colorIndex={index}
               disabled={loading}
-              className={`${focusedLine[1] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-4 ring-containerBorder enabled:hover:ring-[hsl(269,7%,68%)]"}
-              group relative flex w-full flex-col justify-center rounded-3xl bg-gradient-to-tr from-container via-container to-pink/15 p-5 pr-10 text-start transition-all hover:bg-pink/20 hover:ring-2 md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
-            >
-              <p className="flex items-center text-lg font-bold transition-colors group-disabled:text-white/50 md:text-xl lg:text-2xl">
-                <Activity className="mr-2 size-5 flex-shrink-0 stroke-pink group-disabled:stroke-pink/50" />
-                {params.get("search_term2")}
-              </p>
-              <p className="text-sm font-medium text-gray transition-colors group-disabled:text-gray/50 md:text-base">
-                Type: Person
-              </p>
-
-              <X
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevents the parent div's onClick from firing
-                  deleteTerm("search_term2");
-                }}
-                className="absolute right-0 top-0 m-4 text-gray hover:text-white group-disabled:text-gray/50"
-              />
-            </button>
-          )}
-
-          {activeLines > 2 && (
-            <button
-              onClick={() => handleFocusedLineButtonClick(2)}
-              disabled={loading}
-              className={`${focusedLine[2] ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors" : "ring-4 ring-containerBorder enabled:hover:ring-[hsl(269,7%,68%)]"}
-              group relative flex w-full flex-col justify-center rounded-3xl bg-gradient-to-tr from-container via-container to-purple/15 p-5 pr-10 text-start transition-all hover:bg-purple/20 hover:ring-2 md:p-7 md:pr-12 lg:p-9 lg:pr-14`}
-            >
-              <p className="flex items-center text-lg font-bold transition-colors group-disabled:text-white/50 md:text-xl lg:text-2xl">
-                <Activity className="mr-2 size-5 flex-shrink-0 stroke-purple group-disabled:stroke-purple/50" />
-                {params.get("search_term3")}
-              </p>
-              <p className="text-sm font-medium text-gray transition-colors group-disabled:text-gray/50 md:text-base">
-                Type: Person
-              </p>
-
-              <X
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevents the parent div's onClick from firing
-                  deleteTerm("search_term3");
-                }}
-                className="absolute right-0 top-0 m-4 text-gray hover:text-white group-disabled:text-gray/50"
-              />
-            </button>
-          )}
+              isFocused={focusedLine[index]}
+              isCompareActive={activeLines > 1}
+              onClick={() => handleFocusedLineButtonClick(index)}
+              onRemoveClick={() => deleteTerm("search_term" + (index + 1))}
+            />
+          ))}
 
           {activeLines < 3 && (
             <button
