@@ -258,7 +258,6 @@ const ExploreClient = () => {
     "Hrvatski nogometni savez",
   ];
 
-  const colors = ["yellow", "pink", "purple"];
   const searchTerms = [
     params.get("search_term1") || "",
     params.get("search_term2") || "",

@@ -43,18 +43,19 @@ const SearchTermButton = ({
           ? "ring-2 ring-purple disabled:ring-purple/50 disabled:transition-colors"
           : "ring-4 ring-containerBorder enabled:hover:ring-[hsl(269,7%,68%)]",
         isCompareActive
-          ? `bg-gradient-to-tr from-container via-container`
+          ? `bg-gradient-to-tr from-container via-container ${buttonColorVariants[colorIndex as ColorIndex]}`
           : "bg-container",
         `group relative flex w-full flex-col justify-center rounded-3xl p-5 pr-10 text-start transition-all hover:ring-2 md:p-7 md:pr-12 lg:p-9 lg:pr-14`,
-        buttonColorVariants[colorIndex as ColorIndex],
       )}
     >
       <p className="flex items-center text-lg font-bold transition-colors group-disabled:text-white/50 md:text-xl lg:text-2xl">
         {isCompareActive && (
           <Activity
             className={clsx(
-              `mr-2 size-5 flex-shrink-0`,
-              iconColorVariants[colorIndex as ColorIndex],
+              "mr-2 size-5 flex-shrink-0",
+              isCompareActive
+                ? iconColorVariants[colorIndex as ColorIndex]
+                : "",
             )}
           />
         )}
