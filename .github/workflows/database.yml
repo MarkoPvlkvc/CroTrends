@@ -1,0 +1,15 @@
+name: Send Request to Database
+
+# Schedule the workflow to run daily at midnight (UTC)
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  send-request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Send request to the URL
+      run: |
+        curl -X GET "https://cro-trends-markopvlkvcs-projects.vercel.app/explore?search_term1=Mate+Rimac&time_interval=Week"
