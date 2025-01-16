@@ -6,10 +6,33 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  send-request:
+  open_site:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Send request to the URL
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install Puppeteer
+      run: npm install puppeteer
+
+    - name: Open Site, Wait, and Stop
       run: |
-        curl -X GET "https://cro-trends-markopvlkvcs-projects.vercel.app/explore?search_term1=Mate+Rimac&time_interval=Week"
+        node -e "
+        const puppeteer = require('puppeteer');
+        (async () => {
+          const browser = await puppeteer.launch();
+          const page = await browser.newPage();
+          console.log('Opening site...');
+          await page.goto('https://cro-trends-markopvlkvcs-projects.vercel.app/explore?search_term1=Mate+Rimac&time_interval=Week');
+          console.log('Waiting for 10 seconds...');
+          await new Promise(resolve => setTimeout(resolve, 10000));
+          await browser.close();
+          console.log('Done!');
+        })();
+        "
