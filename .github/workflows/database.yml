@@ -4,6 +4,7 @@ name: Send Request to Database
 on:
   schedule:
     - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   open_site:
@@ -26,7 +27,7 @@ jobs:
         node -e "
         const puppeteer = require('puppeteer');
         (async () => {
-          const browser = await puppeteer.launch();
+          const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
           const page = await browser.newPage();
           console.log('Opening site...');
           await page.goto('https://cro-trends-markopvlkvcs-projects.vercel.app/explore?search_term1=Mate+Rimac&time_interval=Week');
