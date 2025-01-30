@@ -22,17 +22,40 @@ jobs:
     - name: Install Puppeteer
       run: npm install puppeteer
 
-    - name: Open Site, Wait, and Stop
+    - name: Open Two Random Sites with Delay
       run: |
         node -e "
         const puppeteer = require('puppeteer');
+
+        const searchTerms = ['Velebit', 'Zagreb', 'Kornati', 'Dalmacija', 'Eurovision'];
+        const timeIntervals = ['Week', 'Month', 'Year', 'All Time'];
+
+        function getRandomElement(arr) {
+          return arr[Math.floor(Math.random() * arr.length)];
+        }
+
         (async () => {
           const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
           const page = await browser.newPage();
-          console.log('Opening site...');
-          await page.goto('https://cro-trends-markopvlkvcs-projects.vercel.app/explore?search_term1=Mate+Rimac&time_interval=Week');
+
+          let search1 = getRandomElement(searchTerms);
+          let time1 = getRandomElement(timeIntervals);
+          let url1 = \`https://cro-trends-markopvlkvcs-projects.vercel.app/explore?search_term1=\${encodeURIComponent(search1)}&time_interval=\${encodeURIComponent(time1)}\`;
+
+          console.log('Opening site 1:', url1);
+          await page.goto(url1);
           console.log('Waiting for 10 seconds...');
           await new Promise(resolve => setTimeout(resolve, 10000));
+
+          let search2 = getRandomElement(searchTerms);
+          let time2 = getRandomElement(timeIntervals);
+          let url2 = \`https://cro-trends-markopvlkvcs-projects.vercel.app/explore?search_term1=\${encodeURIComponent(search2)}&time_interval=\${time2}\`;
+
+          console.log('Opening site 2:', url2);
+          await page.goto(url2);
+          console.log('Waiting for another 10 seconds...');
+          await new Promise(resolve => setTimeout(resolve, 10000));
+
           await browser.close();
           console.log('Done!');
         })();
