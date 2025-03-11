@@ -2,18 +2,7 @@
 
 import Autocomplete from "@/components/Autocomplete";
 import React, { Suspense, useEffect, useRef, useState } from "react";
-import {
-  Activity,
-  Asterisk,
-  Circle,
-  Minus,
-  Plus,
-  Square,
-  Tally1,
-  Tally1Icon,
-  Tally3,
-  X,
-} from "lucide-react";
+import { Plus } from "lucide-react";
 import Button from "@/components/Button";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
@@ -23,36 +12,49 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { TermData, AutocompleteRef } from "@/interfaces/interfaces";
 import SearchTermButton from "@/components/SearchTermButton";
 
-/* const mockData = [
-  {
-    publication_date: "Mon",
-    count: 3,
-  },
-  {
-    publication_date: "Tue",
-    count: 5,
-  },
-  {
-    publication_date: "Wed",
-    count: 3,
-  },
-  {
-    publication_date: "Thu",
-    count: 3,
-  },
-  {
-    publication_date: "Fri",
-    count: 5,
-  },
-  {
-    publication_date: "Sat",
-    count: 1,
-  },
-  {
-    publication_date: "Sun",
-    count: 6,
-  },
-]; */
+const suggestions = [
+  "Jadranka Kosor",
+  "Kornati",
+  "Hajduk",
+  "Zagreb",
+  "Rade Šerbedžija",
+  "Mia Dimšić",
+  "Ivan Penava",
+  "Vesna Pisarović",
+  "USKOK",
+  "Zdravko Mamić",
+  "Dino Merlin",
+  "Socijaldemokratska partija Hrvatske (SDP)",
+  "Zoran Milanović",
+  "Ivo Josipović",
+  "Davor Bernardić",
+  "Severina Vučković",
+  "UEFA Euro",
+  "Eurovision",
+  "Europska Unija",
+  "Mate Rimac",
+  "Trg Bana Jelačića",
+  "Zlatko Dalić",
+  "Velebit",
+  "Hvar",
+  "Stjepan Mesić",
+  "Plitvička jezera",
+  "Hrvatska demokratska zajednica (HDZ)",
+  "Luka Modrić",
+  "Kolinda Grabar-Kitarović",
+  "Nina Badrić",
+  "Hrvatska gorska služba spašavanja (HGSS)",
+  "Hrvatski sabor",
+  "Hrvatski autoklub (HAK)",
+  "Šibenik",
+  "Sandra Perković",
+  "Pula",
+  "Dinamo",
+  "Dalmacija",
+  "Andrej Plenković",
+  "Tomislav Karamarko",
+  "Hrvatski nogometni savez",
+];
 
 type TimeInterval = "All Time" | "Year" | "Month" | "Week";
 
@@ -213,50 +215,6 @@ const ExploreClient = () => {
     setParams(newParams);
     router.push(`?${newParams.toString()}`, { scroll: false });
   };
-
-  const suggestions = [
-    "Jadranka Kosor",
-    "Kornati",
-    "Hajduk",
-    "Zagreb",
-    "Rade Šerbedžija",
-    "Mia Dimšić",
-    "Ivan Penava",
-    "Vesna Pisarović",
-    "USKOK",
-    "Zdravko Mamić",
-    "Dino Merlin",
-    "Socijaldemokratska partija Hrvatske (SDP)",
-    "Zoran Milanović",
-    "Ivo Josipović",
-    "Davor Bernardić",
-    "Severina Vučković",
-    "UEFA Euro",
-    "Eurovision",
-    "Europska Unija",
-    "Mate Rimac",
-    "Trg Bana Jelačića",
-    "Zlatko Dalić",
-    "Velebit",
-    "Hvar",
-    "Stjepan Mesić",
-    "Plitvička jezera",
-    "Hrvatska demokratska zajednica (HDZ)",
-    "Luka Modrić",
-    "Kolinda Grabar-Kitarović",
-    "Nina Badrić",
-    "Hrvatska gorska služba spašavanja (HGSS)",
-    "Hrvatski sabor",
-    "Hrvatski autoklub (HAK)",
-    "Šibenik",
-    "Sandra Perković",
-    "Pula",
-    "Dinamo",
-    "Dalmacija",
-    "Andrej Plenković",
-    "Tomislav Karamarko",
-    "Hrvatski nogometni savez",
-  ];
 
   const searchTerms = [
     params.get("search_term1") || "",

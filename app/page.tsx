@@ -5,11 +5,10 @@ import { FileText, Search, TrendingUp } from "lucide-react";
 import { FlipWords } from "@/components/ui/flip-words";
 import Link from "next/link";
 import ButtonSecondary from "@/components/ButtonSecondary";
-import { motion, useScroll } from "framer-motion";
+
+const words = ["Pulse", "Rhythm", "Spirit", "Beat"];
 
 export default function Home() {
-  const words = ["Pulse", "Rhythm", "Spirit", "Beat"];
-
   return (
     <main
       id="home"
