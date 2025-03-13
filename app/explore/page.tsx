@@ -9,7 +9,7 @@ import { createClient } from "@/utils/supabase/client";
 import { PostgrestError } from "@supabase/supabase-js";
 import Graph from "@/components/Graph";
 import { useRouter, useSearchParams } from "next/navigation";
-import { TermData, AutocompleteRef } from "@/interfaces/interfaces";
+import { TermData, AutocompleteRef } from "@/lib/types";
 import SearchTermButton from "@/components/SearchTermButton";
 
 const suggestions = [

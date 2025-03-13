@@ -14,7 +14,7 @@ import {
   SquareMousePointer,
 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { AutocompleteRef } from "@/interfaces/interfaces";
+import { AutocompleteRef } from "@/lib/types";
 import { motion } from "framer-motion";
 import {
   SquareArrowDown,

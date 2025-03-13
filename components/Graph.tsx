@@ -1,6 +1,5 @@
 "use client";
 
-import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import {
   LineChart,
@@ -9,20 +8,11 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
-import { PostgrestError } from "@supabase/supabase-js";
 import { format } from "date-fns";
-import { TermData } from "@/interfaces/interfaces";
 import { LoaderCircle } from "lucide-react";
-
-interface GraphProps {
-  terms: TermData[];
-  loading: boolean;
-  error: PostgrestError | null;
-  activeLines: number;
-}
+import { GraphProps } from "@/lib/types";
 
 const dateFormatter = (date: string) => {
   return format(new Date(date), "dd.MM.yyyy");
