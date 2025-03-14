@@ -18,3 +18,5 @@ export interface GraphProps {
   error: PostgrestError | null;
   activeLines: number;
 }
+
+export type TimeInterval = "All Time" | "Year" | "Month" | "Week";

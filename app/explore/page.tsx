@@ -9,54 +9,9 @@ import { createClient } from "@/utils/supabase/client";
 import { PostgrestError } from "@supabase/supabase-js";
 import Graph from "@/components/Graph";
 import { useRouter, useSearchParams } from "next/navigation";
-import { TermData, AutocompleteRef } from "@/lib/types";
+import { TermData, AutocompleteRef, TimeInterval } from "@/lib/types";
 import SearchTermButton from "@/components/SearchTermButton";
-
-const suggestions = [
-  "Jadranka Kosor",
-  "Kornati",
-  "Hajduk",
-  "Zagreb",
-  "Rade Šerbedžija",
-  "Mia Dimšić",
-  "Ivan Penava",
-  "Vesna Pisarović",
-  "USKOK",
-  "Zdravko Mamić",
-  "Dino Merlin",
-  "Socijaldemokratska partija Hrvatske (SDP)",
-  "Zoran Milanović",
-  "Ivo Josipović",
-  "Davor Bernardić",
-  "Severina Vučković",
-  "UEFA Euro",
-  "Eurovision",
-  "Europska Unija",
-  "Mate Rimac",
-  "Trg Bana Jelačića",
-  "Zlatko Dalić",
-  "Velebit",
-  "Hvar",
-  "Stjepan Mesić",
-  "Plitvička jezera",
-  "Hrvatska demokratska zajednica (HDZ)",
-  "Luka Modrić",
-  "Kolinda Grabar-Kitarović",
-  "Nina Badrić",
-  "Hrvatska gorska služba spašavanja (HGSS)",
-  "Hrvatski sabor",
-  "Hrvatski autoklub (HAK)",
-  "Šibenik",
-  "Sandra Perković",
-  "Pula",
-  "Dinamo",
-  "Dalmacija",
-  "Andrej Plenković",
-  "Tomislav Karamarko",
-  "Hrvatski nogometni savez",
-];
-
-type TimeInterval = "All Time" | "Year" | "Month" | "Week";
+import { suggestions } from "@/lib/constants";
 
 const ExploreClient = () => {
   const router = useRouter();
